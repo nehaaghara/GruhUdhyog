@@ -6,6 +6,7 @@
 package com.damani.ripo;
 
 import com.damani.model.TblUserTable;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Service;
  * @author ITMCS-PC
  */
 @Service
-public interface AuthenticationRipo {
-    public void registrationripo(TblUserTable usertable);
-    public List<TblUserTable> loginripo(TblUserTable usertable);
+public interface AdminSellerRipo {
+    
+    public void addseller(TblUserTable usertable);
+    public List<TblUserTable> viewseller();
+    public List<TblUserTable> editsellerripo(BigInteger id);
+    public void deletesellerripo(BigInteger id);
 }

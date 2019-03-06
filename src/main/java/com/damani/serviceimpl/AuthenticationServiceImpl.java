@@ -7,7 +7,7 @@ package com.damani.serviceimpl;
 
 
 
-import com.damani.model.UserTable;
+import com.damani.model.TblUserTable;
 import com.damani.ripo.AuthenticationRipo;
 import com.damani.service.AuthenticationService;
 import java.util.List;
@@ -24,11 +24,11 @@ public class AuthenticationServiceImpl implements AuthenticationService{
     AuthenticationRipo  authenticationRipo; 
    
     @Override
-    public void registrationservice(UserTable usertable) {
+    public void registrationservice(TblUserTable usertable) {
        authenticationRipo.registrationripo(usertable);
     }
     @Override
-    public List<UserTable> loginservice(UserTable usertable) {
+    public List<TblUserTable> loginservice(TblUserTable usertable) {
      
         return authenticationRipo.loginripo(usertable);
     }

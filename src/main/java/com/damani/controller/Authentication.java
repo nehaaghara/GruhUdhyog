@@ -5,7 +5,7 @@
  */
 package com.damani.controller;
 
-import com.damani.model.UserTable;
+import com.damani.model.TblUserTable;
 import com.damani.service.AuthenticationService;
 import java.math.BigInteger;
 import java.util.List;
@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -30,7 +31,7 @@ public class Authentication {
     @RequestMapping("/register")
     public String  registration(HttpServletRequest req)
     {
-         UserTable usertable=new UserTable();
+         TblUserTable usertable=new TblUserTable();
         String firstname=req.getParameter("fname");
         String lastname=req.getParameter("lname");
         String email=req.getParameter("email");
@@ -46,24 +47,33 @@ public class Authentication {
     }
     
     @RequestMapping("/loginauthentication")
-    public String  loginauthentication(HttpServletRequest req)
+    public ModelAndView  loginauthentication(HttpServletRequest req)
     {
-        UserTable usertable=new UserTable();
+        ModelAndView mv=new ModelAndView();
+        TblUserTable usertable=new TblUserTable();
         String email=req.getParameter("email");
         String password=req.getParameter("password");
         usertable.setEmail_address(email);
         usertable.setPassword(password);
-        List<UserTable> lstuser= authenticationService.loginservice(usertable);
+        List<TblUserTable> lstuser= authenticationService.loginservice(usertable);
         System.out.println("lst"+lstuser.size());
         HttpSession session=req.getSession(true);
         session.setAttribute("lstuser", lstuser);
-        if(lstuser.isEmpty())
+        if(!lstuser.isEmpty())
         {
-         return "redirect:/loginindex";    
+                if(lstuser.get(0).getTblUserRole().getRolePK().equals(new BigInteger("1")))
+                {
+                    mv.setViewName("com.damani.adminIndex");
+                }
+                else
+                {
+                    mv.setViewName("com.damani.userindex");
+                }
         }
         else
         {
-         return "redirect:/";
+            mv.setViewName("com.damani.login");
         }
+        return mv;
     }
 }

@@ -39,8 +39,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="${pageContext.servletContext.contextPath}/postordelete"><i class="fa fa-circle-o"></i> Add Seller</a></li>
-                    <li><a href="${pageContext.servletContext.contextPath}/viewalltopic"><i class="fa fa-circle-o"></i> View Seller</a></li>
+                    <li class="active"><a href="${pageContext.servletContext.contextPath}/adminaddsellerindex"><i class="fa fa-circle-o"></i> Add Seller</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/showallsellercontroller"><i class="fa fa-circle-o"></i> View Seller</a></li>
                 </ul>
             </li>
 

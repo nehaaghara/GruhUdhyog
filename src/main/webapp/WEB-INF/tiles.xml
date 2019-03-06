@@ -29,6 +29,14 @@
         <put-attribute name="title" value="gruhudhyog"></put-attribute>
     </definition>
     <!--Admin Menu-->
+     <definition name="com.damani.adminaddsellertiles" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/adminaddseller.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+      <definition name="com.damani.showallsellertiles" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/showallselleradmin.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
     
     <!-- Registration tiles -->
     <definition name="com.damani.register" extends="com.damani.userlayout">
@@ -38,7 +46,7 @@
     
     <!-- login tiles -->
     <definition name="com.damani.login" extends="com.damani.userlayout">
-        <put-attribute name="body" value="/WEB-INF/jsp/login/login.jsp"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/jsp/login/userLogin.jsp"></put-attribute>
     </definition>
     <!-- login tiles -->
     

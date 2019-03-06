@@ -9,9 +9,13 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,7 +24,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "sign_up")
-public class UserTable implements Serializable{
+public class TblUserTable implements Serializable{
    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +45,10 @@ public class UserTable implements Serializable{
     
     @Column(name="phonenumber")
     BigInteger phonenumber ;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roleFk")
+    TblUserRole tblUserRole;
 
     public BigInteger getUserid() {
         return userid;
@@ -90,8 +98,13 @@ public class UserTable implements Serializable{
         this.phonenumber = phonenumber;
     }
 
+    public TblUserRole getTblUserRole() {
+        return tblUserRole;
+    }
 
-  
-    
+    public void setTblUserRole(TblUserRole tblUserRole) {
+        this.tblUserRole = tblUserRole;
+    }
+
     
 }

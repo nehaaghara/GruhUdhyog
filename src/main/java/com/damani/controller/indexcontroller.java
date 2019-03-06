@@ -6,9 +6,11 @@
 package com.damani.controller;
 
 
+import com.damani.model.TblUserTable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -37,5 +39,14 @@ public class indexcontroller {
   {
       return "com.damani.register";
   }  
+  
+   @RequestMapping(value="/adminaddsellerindex",method = RequestMethod.GET)
+  public ModelAndView addseller()
+  {
+      ModelAndView mv=new ModelAndView();
+      mv.addObject("usertablemodel", new TblUserTable());
+      mv.setViewName("com.damani.adminaddsellertiles");
+      return mv;
+  }
     
 }
