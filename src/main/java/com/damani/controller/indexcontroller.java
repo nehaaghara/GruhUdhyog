@@ -5,7 +5,7 @@
  */
 package com.damani.controller;
 
-import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +19,7 @@ public class indexcontroller {
     
         @RequestMapping(value="/")
         public String index(){
-        return "com.damani.userindex";
+        return "com.damani.adminIndex";
 }
 
     
