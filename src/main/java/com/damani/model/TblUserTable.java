@@ -41,21 +41,13 @@ public class TblUserTable implements Serializable {
 
     @Column(name = "password")
     String password;
-
-    @Column(name = "phonenumber")
-    BigInteger phonenumber;
-
+    
+    @Column(name="phonenumber")
+    BigInteger phonenumber ;
+    
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "roleFK")
-    TblUserRole userrole;
-
-    public TblUserRole getUserrole() {
-        return userrole;
-    }
-
-    public void setUserrole(TblUserRole userrole) {
-        this.userrole = userrole;
-    }
+    @JoinColumn(name = "roleFk")
+    TblUserRole tblUserRole;
 
     public BigInteger getUserid() {
         return userid;
@@ -103,6 +95,14 @@ public class TblUserTable implements Serializable {
 
     public void setPhonenumber(BigInteger phonenumber) {
         this.phonenumber = phonenumber;
+    }
+
+    public TblUserRole getTblUserRole() {
+        return tblUserRole;
+    }
+
+    public void setTblUserRole(TblUserRole tblUserRole) {
+        this.tblUserRole = tblUserRole;
     }
 
 }

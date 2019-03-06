@@ -16,6 +16,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
+
   <link  rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"/>
   <link rel="stylesheet" href="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
@@ -47,7 +48,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-  <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery-ui/jquery-ui.min.js"></script>
 
@@ -63,7 +64,6 @@
   <!-- Content Wrapper. Contains page content -->
 </div>
  
-  
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
@@ -100,8 +100,12 @@
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/dist/js/demo.js"></script>
+<<<<<<< HEAD
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
 
 </body>
  <tiles:insertAttribute name="adminFooter" />
+
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
 </html>

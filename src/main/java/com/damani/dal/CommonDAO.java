@@ -6,7 +6,9 @@
 package com.damani.dal;
 
 import static com.damani.dal.CommonDAO.MSGDELETEFAILED;
+import com.damani.model.TblUserTable;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -582,6 +584,10 @@ public class CommonDAO extends HibernateTemplate {
         } finally {
             manager.closeSession(session);
         }
+    }
+
+    public void delete(Class<TblUserTable> aClass, String userid, OperationTypeEnum operationTypeEnum, BigInteger id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
