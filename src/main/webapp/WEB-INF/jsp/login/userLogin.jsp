@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Login
-    Created on : Mar 5, 2019, 12:20:12 PM
-    Author     : ITMCS
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -30,7 +26,7 @@
         <div class="col-xs-12">
           <div class="row">
             <div class="col-lg-6 col-md-8 col-sm-8 col-lg-offset-3 col-sm-offset-2">
-              <form class="main-form full" action = "/" method="post">
+              <form class="main-form full" action = "loginauthentication">
                 <div class="row">
                   <div class="col-xs-12 mb-20">
                     <div class="heading-part heading-bg">
@@ -40,13 +36,13 @@
                   <div class="col-xs-12">
                     <div class="input-box">
                       <label for="login-email">Email address</label>
-                      <input id="login-email" type="email" required placeholder="Email Address">
+                      <input id="login-email" type="email" required placeholder="Email Address" name="email">
                     </div>
                   </div>
                   <div class="col-xs-12">
                     <div class="input-box">
                       <label for="login-pass">Password</label>
-                      <input id="login-pass" type="password" required placeholder="Enter your Password">
+                      <input id="login-pass" type="password" required placeholder="Enter your Password" name="password">
                     </div>
                   </div>
                   <div class="col-xs-12">

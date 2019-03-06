@@ -25,42 +25,45 @@ public class Authentication {
     @Autowired
     AuthenticationService authenticationService;
     
-    UserTable usertable=new UserTable();
+   
     
     @RequestMapping("/register")
     public String  registration(HttpServletRequest req)
     {
+         UserTable usertable=new UserTable();
         String firstname=req.getParameter("fname");
         String lastname=req.getParameter("lname");
         String email=req.getParameter("email");
         String password=req.getParameter("password");
         BigInteger phonenumber=new BigInteger(req.getParameter("phone"));
-        usertable.setFirstname(firstname);
-        usertable.setLastname(lastname);
-        usertable.setEmail(email);
+        usertable.setFirst_name(firstname);
+        usertable.setLast_name(lastname);
+        usertable.setEmail_address(email);
         usertable.setPassword(password);
         usertable.setPhonenumber(phonenumber);
         authenticationService.registrationservice(usertable);
-        return "";
+        return "redirect:/loginindex";
     }
     
-    @RequestMapping("/login")
+    @RequestMapping("/loginauthentication")
     public String  loginauthentication(HttpServletRequest req)
     {
+        UserTable usertable=new UserTable();
         String email=req.getParameter("email");
         String password=req.getParameter("password");
-        usertable.setEmail(email);
+        usertable.setEmail_address(email);
         usertable.setPassword(password);
         List<UserTable> lstuser= authenticationService.loginservice(usertable);
+        System.out.println("lst"+lstuser.size());
         HttpSession session=req.getSession(true);
         session.setAttribute("lstuser", lstuser);
         if(lstuser.isEmpty())
         {
-         return "";    
+         return "redirect:/loginindex";    
         }
         else
         {
-         return "";
+         return "redirect:/";
         }
     }
 }

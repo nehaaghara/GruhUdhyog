@@ -8,6 +8,7 @@ package com.damani.controller;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 
 /**
@@ -17,12 +18,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class indexcontroller {
     
-        @RequestMapping(value="/")
-        public String index(){
+  @RequestMapping(value="/")
+  public String index()
+  {
         return "com.damani.userindex";
-}
+  }
 
-    
-    
+  @RequestMapping(value="/loginindex")  
+  public String login()
+  {
+      return "com.damani.login";
+  }
+  
+  @RequestMapping(value="/registrationindex")  
+  public String registration()
+  {
+      return "com.damani.register";
+  }  
     
 }

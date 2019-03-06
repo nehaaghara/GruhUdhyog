@@ -17,12 +17,12 @@
         <put-attribute name="title" value="gruhudhyog"></put-attribute>
     </definition>
     <definition name="com.damani.login" extends="com.damani.userlayout">
-         <put-attribute name="body" value="/WEB-INF/jsp/login/login.jsp"></put-attribute>
+         <put-attribute name="body" value="/WEB-INF/jsp/login/userLogin.jsp"></put-attribute>
     </definition>
-    
-    <definition name="com.damani.login" extends="com.damani.userlayout">
+     <definition name="com.damani.register" extends="com.damani.userlayout">
          <put-attribute name="body" value="/WEB-INF/jsp/login/registration.jsp"></put-attribute>
     </definition>
+    
     
 </tiles-definitions>
 

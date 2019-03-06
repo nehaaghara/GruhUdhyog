@@ -5,6 +5,7 @@
  */
 package com.damani.model;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,21 +19,22 @@ import javax.persistence.Table;
  * @author ITMCS-PC
  */
 @Entity
-@Table(name = "Sign_Up")
-public class UserTable {
+@Table(name = "sign_up")
+public class UserTable implements Serializable{
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="userid")
+    @Column(name="userid",nullable=false)
     BigInteger userid;
     
     @Column(name="first_name")
-    String firstname;
+    String first_name;
     
     @Column(name="last_name")
-    String lastname;
+    String last_name;
     
     @Column(name="email_address")
-    String email;
+    String email_address;
     
     @Column(name="password")
     String password;
@@ -48,28 +50,28 @@ public class UserTable {
         this.userid = userid;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail_address() {
+        return email_address;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail_address(String email_address) {
+        this.email_address = email_address;
     }
 
     public String getPassword() {
@@ -88,7 +90,8 @@ public class UserTable {
         this.phonenumber = phonenumber;
     }
 
-   
+
+  
     
     
 }
