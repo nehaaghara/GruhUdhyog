@@ -65,53 +65,7 @@
   
   <!-- CONTAIN START -->
 
-  <!-- SUB-BANNER START -->
-  <section class="ptb-95">
-    <div class="container">
-      <div class="sub-banner-block center-sm">
-        <div class="row mlr_-20">
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 plr-20">
-            <div class="sub-banner sub-banner1">
-              <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/sub-banner1.jpg">
-              <div class="sub-banner-detail">
-                <div class="sub-banner-title sub-banner-title-color"> Top brands tools <br> sale for online</div>
-                <a class="btn btn-color " href="shop.html">Shop Now!</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 plr-20">
-            <div class="sub-banner sub-banner2" >
-              <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/sub-banner2.jpg">
-              <div class="sub-banner-detail">
-                <div class="sub-banner-title sub-banner-title-color">Woodworking </div>
-                <div class="sub-banner-subtitle">Tools Store</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 plr-20">
-            <div class="sub-banner sub-banner3" >
-              <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/sub-banner3.jpg">
-              <div class="sub-banner-detail">
-                  <div class="sub-banner-title sub-banner-title-color">Hand Tool, Air tools, <br> Power Tool Accessories</div>
-                  <a class="btn btn-color " href="shop.html">Shop Now!</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 plr-20">
-            <div class="sub-banner sub-banner4" >
-              <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/sub-banner4.jpg">
-              <div class="sub-banner-detail">
-                  <div class="sub-banner-title sub-banner-title-color">Great products</div>
-                  <div class="sub-banner-subtitle">Tools and accessories</div>
-                  <a class="btn btn-color " href="shop.html">Shop Now!</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- SUB-BANNER END -->
+ 
 
   <!--  Featured Products Slider Block Start  -->
   <section class="pb-95">
@@ -125,6 +79,7 @@
                   <li><a class="tab-step1 selected" title="step1">latest</a></li>
                   <li><a class="tab-step2" title="step2">Featured</a></li>
                   <li><a class="tab-step3" title="step3">Most Viewed</a></li>
+                   <li><a class="tab-step3" title="step3">Categories</a></li>
                 </ul>
               </div>
             </div>
@@ -1074,174 +1029,10 @@
   </section>
   <!--  Featured Products Slider Block End  -->
 
-  <!--  shop Categories Block Start  -->
-  <section class="shop-categories ptb-95">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="heading-part align-center mb-30 mb-xs-15">
-            <h2 class="main_title"><span>shop by Categories</span></h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3 col-sm-6 col-xs-6">
-          <div class="item ">
-            <div class="item-inner cate_1">
-              <img src="${pageContext.servletContext.contextPath}/webresource/images/cate_1.jpg" alt="Eshoper">
-              <div class="cate-detail mt-30">
-                <div class="cate-title mb-20">
-                  <h3>Power Tools<span></span></h3>
-                </div>
-                <ul>
-                  <li><a href="shop.html"><span>■</span>Drills</a></li>
-                  <li><a href="shop.html"><span>■</span>Saws </a></li>
-                  <li><a href="shop.html"><span>■</span>Sanders</a></li>
-                  <li><a href="shop.html"><span>■</span>Grinders </a></li>
-                  <li><a href="shop.html"><span>■</span>Polishers</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-6">
-          <div class="item ">
-            <div class="item-inner cate_2">
-              <img src="${pageContext.servletContext.contextPath}/webresource/images/cate_2.jpg" alt="Eshoper">
-              <div class="cate-detail mt-30">
-                <div class="cate-title mb-20">
-                  <h3>Hand Tools <span></span></h3>
-                </div>
-                <ul>
-                  <li><a href="shop.html"><span>■</span>Wrenches</a></li>
-                  <li><a href="shop.html"><span>■</span>Screwdrivers</a></li>
-                  <li><a href="shop.html"><span>■</span>Hand Drill</a></li>
-                  <li><a href="shop.html"><span>■</span>Claw Hammers </a></li>
-                  <li><a href="shop.html"><span>■</span>Utility Knives</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-6">
-          <div class="item ">
-            <div class="item-inner cate_3">
-              <img src="${pageContext.servletContext.contextPath}/webresource/images/cate_3.jpg" alt="Eshoper">
-              <div class="cate-detail mt-30">
-                <div class="cate-title mb-20">
-                  <h3>Woodworking <span></span></h3>
-                </div>
-                <ul>
-                  <li><a href="shop.html"><span>■</span>Lathes</a></li>
-                  <li><a href="shop.html"><span>■</span>Routers</a></li>
-                  <li><a href="shop.html"><span>■</span>Rotary Tools </a></li>
-                  <li><a href="shop.html"><span>■</span>Planers</a></li>
-                  <li><a href="shop.html"><span>■</span>Oscillating Tools</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-xs-6">
-          <div class="item ">
-            <div class="item-inner cate_4">
-              <img src="${pageContext.servletContext.contextPath}/webresource/images/cate_4.jpg" alt="Eshoper">
-              <div class="cate-detail mt-30">
-                <div class="cate-title mb-20">
-                  <h3>Tool Accessories <span></span></h3>
-                </div>
-                <ul>
-                  <li><a href="shop.html"><span>■</span>End Mills</a></li>
-                  <li><a href="shop.html"><span>■</span>Drill Bit</a></li>
-                  <li><a href="shop.html"><span>■</span>Keyless Chuck</a></li>
-                  <li><a href="shop.html"><span>■</span>Saw Blades</a></li>
-                  <li><a href="shop.html"><span>■</span>Tool Stands</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--  shop Categories Block End  -->
+ 
 
-  <section class="ptb-95">
-    <div class="special-product">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="heading-part align-center mb-30 mb-xs-15">
-              <h2 class="main_title"><span>Special Product</span></h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-1"></div>
-          <div class="col-lg-3 col-md-12 col-xs-12">
-            <div class="special-info-1">
-              <p><i>1.</i>Lorem Ipsum is not simply random text. It has roots in a piece of Latin literature</p>
-              <p><i>2.</i>The standard chunk of Lorem Ipsum used since the 1500s is for those interested</p>
-              <p><i>3.</i>Lorem ipsum dolor sit amet, consectetur tempor incididunt ut labore et aliqua. </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-12 col-xs-12">
-            <div class="special-img">
-              <a href="shop.html">
-                <img src="${pageContext.servletContext.contextPath}/webresource/images/special-product.jpg" alt="Eshoper">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-12 col-xs-12">
-            <div class="special-info-2">
-              <p><i>4.</i>Lorem ipsum dolor sit amet, consectetur adipiscing elit,do eiusmod  magna aliqua. </p>
-              <p><i>5.</i>Sed ut perspiciatis unde omnis iste natus error voluptatem  doloremque laudantium</p>
-              <p><i>6.</i>On the other hand, we with righteous indignation and dislike demoralized </p>
-            </div>
-          </div>
-          <div class="col-lg-1"></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
-  <!--  Site Services Features Block Start  -->
-  <section class="service-box-bg">
-    <div class="container">
-      <div class="ser-feature-block center-sm">
-        <div class="row">
-          <div class="col-md-4 service-box border-right">
-            <div class="feature-box ">
-              <div class="feature-icon feature1"></div>
-              <div class="feature-detail">
-                <div class="ser-title">Free Shipping</div>
-                <div class="ser-subtitle"> Shipping in World for orders over 99</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 service-box border-right">
-            <div class="feature-box">
-              <div class="feature-icon feature2"></div>
-              <div class="feature-detail">
-                <div class="ser-title">Special Gift</div>
-                <div class="ser-subtitle">Give the perfect gift to your loved ones </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 service-box">
-            <div class="feature-box ">
-              <div class="feature-icon feature3"></div>
-              <div class="feature-detail">
-                <div class="ser-title">Money Back</div>
-                <div class="ser-subtitle">Not receiving an item applied to reward</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--  Site Services Features Block End  -->
 
   <!--Testimonial Block Start -->
   <section class="client-bg ptb-95">
@@ -1326,85 +1117,7 @@
   </section>
   <!--Testimonial Block End -->
 
-  <!--Blog Block Start -->
-  <section class="ptb-95">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 ">
-          <div class="heading-part align-center mb-30 mb-xs-15">
-            <h2 class="main_title"><span>RECENT POSTS</span></h2>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="blog-item pb-sm-30">
-            <div class="row">
-              <div class="col-lg-6">
-              <div class="blog-media"> 
-                <img src="${pageContext.servletContext.contextPath}/webresource/images/blog_img1.jpg" alt="Eshoper">
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-                <div class="effect"></div>  
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-detail"> 
-                <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                <span>by Wed Censtoriya</span>
-                <div class="post-info">
-                  <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                  <ul>
-                    <li>
-                      <a href="#">0 comment(s)</a>
-                    </li>
-                    <li>
-                      <a href="single-blog.html">Read more 
-                        <i class="fa fa-angle-double-right"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="blog-item">
-            <div class="row">
-              <div class="col-lg-6">
-              <div class="blog-media"> 
-                <img src="${pageContext.servletContext.contextPath}/webresource/images/blog_img2.jpg" alt="Eshoper"> 
-                <a href="single-blog.html" title="Click For Read More" class="read">&nbsp;</a>
-                <div class="effect"></div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="blog-detail"> 
-                <div class="blog-title"><a href="single-blog.html">MAURIS LACINIA LECTUS</a></div>
-                <span>by Wed Censtoriya</span>
-                <div class="post-info">
-                  <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec eros tellus, scelerisque nec, rhoncus eget, laoreet sit amet.</p>
-                  <ul>
-                    <li>
-                      <a href="#">0 comment(s)</a>
-                    </li>
-                    <li>
-                      <a href="single-blog.html">Read more 
-                        <i class="fa fa-angle-double-right"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--Blog Block End -->
+ 
   
   <!-- Brand logo block Start  -->
   <section class="">

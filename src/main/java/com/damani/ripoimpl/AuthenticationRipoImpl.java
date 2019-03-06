@@ -5,9 +5,11 @@
  */
 package com.damani.ripoimpl;
 
-import  com.damani.dal.CommonDAO;
+
+import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
 import com.damani.model.UserTable;
+
 import com.damani.ripo.AuthenticationRipo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,13 @@ public class AuthenticationRipoImpl implements  AuthenticationRipo{
     
     @Override
     public void registrationripo(UserTable usertable) {
+        System.out.println(usertable.getFirst_name()+usertable.getLast_name());
          commonDAO.saveOrUpdate(usertable);
      }
     @Override
     public List<UserTable> loginripo(UserTable usertable) {
-        return commonDAO.findEntity(UserTable.class, "email", OperationTypeEnum.EQ , usertable.getEmail() , "password",OperationTypeEnum.EQ , usertable.getPassword());
+        System.out.println("hy i am hingu");
+        return commonDAO.findEntity(UserTable.class,"email_address", OperationTypeEnum.EQ , usertable.getEmail_address() ,"password",OperationTypeEnum.EQ , usertable.getPassword());
     }
     
 }

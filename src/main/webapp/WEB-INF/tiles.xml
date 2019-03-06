@@ -31,7 +31,7 @@
     <!--Admin Menu-->
     
     <!-- Registration tiles -->
-    <definition name="com.damani.login" extends="com.damani.userlayout">
+    <definition name="com.damani.register" extends="com.damani.userlayout">
         <put-attribute name="body" value="/WEB-INF/jsp/login/registration.jsp"></put-attribute>
     </definition>
     <!-- Registration tiles -->
@@ -53,8 +53,5 @@
         <put-attribute name="body" value="/WEB-INF/jsp/view/checkOut.jsp"></put-attribute>
     </definition>
     <!-- checkOut tiles -->
-    
-   
-    
 </tiles-definitions>
 

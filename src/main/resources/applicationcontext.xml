@@ -49,7 +49,7 @@
             <property name="dataSource">
                 <ref bean="dataSource"/>
             </property>
-            <property name="packagesToScan" value="com.brainbox.model"/>
+            <property name="packagesToScan" value="com.damani.model"/>
             <property name="hibernateProperties">
                 <props>
                     <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>

@@ -50,8 +50,8 @@
                       <ul class="link-dropdown-list">
                         <li> <span class="dropdown-title">Default welcome msg!</span>
                           <ul>
-                            <li><a href="login.html">Sign In</a></li>
-                            <li><a href="register.html">Create an Account</a></li>
+                            <li><a href="${pageContext.servletContext.contextPath}/loginindex">LogIn</a></li>
+                            <li><a href="${pageContext.servletContext.contextPath}/registrationindex">Create an Account</a></li>
                           </ul>
                         </li>
                         <li> <span class="dropdown-title">Language :</span>
