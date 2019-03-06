@@ -26,7 +26,7 @@
         <div class="col-xs-12">
           <div class="row">
             <div class="col-lg-6 col-md-8 col-sm-8 col-lg-offset-3 col-sm-offset-2">
-              <form class="main-form full" action = "loginauthentication">
+              <form class="main-form full" action = "loginauthentication" method="get">
                 <div class="row">
                   <div class="col-xs-12 mb-20">
                     <div class="heading-part heading-bg">

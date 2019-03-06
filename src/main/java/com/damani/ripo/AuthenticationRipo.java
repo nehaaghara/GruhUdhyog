@@ -5,7 +5,7 @@
  */
 package com.damani.ripo;
 
-import com.damani.model.UserTable;
+import com.damani.model.TblUserTable;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface AuthenticationRipo {
-    public void registrationripo(UserTable usertable);
-    public List<UserTable> loginripo(UserTable usertable);
+    public void registrationripo(TblUserTable usertable);
+    public List<TblUserTable> loginripo(TblUserTable usertable);
 }

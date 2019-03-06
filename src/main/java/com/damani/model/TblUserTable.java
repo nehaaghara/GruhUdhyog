@@ -9,9 +9,12 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,28 +22,40 @@ import javax.persistence.Table;
  * @author ITMCS-PC
  */
 @Entity
-@Table(name = "sign_up")
-public class UserTable implements Serializable{
-   
+@Table(name = "tbl_signup")
+public class TblUserTable implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="userid",nullable=false)
+    @Column(name = "userid", nullable = false)
     BigInteger userid;
-    
-    @Column(name="first_name")
+
+    @Column(name = "first_name")
     String first_name;
-    
-    @Column(name="last_name")
+
+    @Column(name = "last_name")
     String last_name;
-    
-    @Column(name="email_address")
+
+    @Column(name = "email_address")
     String email_address;
-    
-    @Column(name="password")
+
+    @Column(name = "password")
     String password;
-    
-    @Column(name="phonenumber")
-    BigInteger phonenumber ;
+
+    @Column(name = "phonenumber")
+    BigInteger phonenumber;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roleFK")
+    TblUserRole userrole;
+
+    public TblUserRole getUserrole() {
+        return userrole;
+    }
+
+    public void setUserrole(TblUserRole userrole) {
+        this.userrole = userrole;
+    }
 
     public BigInteger getUserid() {
         return userid;
@@ -90,8 +105,4 @@ public class UserTable implements Serializable{
         this.phonenumber = phonenumber;
     }
 
-
-  
-    
-    
 }

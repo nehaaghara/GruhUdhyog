@@ -6,7 +6,7 @@
 package com.damani.service;
 
 
-import com.damani.model.UserTable;
+import com.damani.model.TblUserTable;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AuthenticationService {
     
-    public void registrationservice(UserTable usertable);
-    public List<UserTable> loginservice(UserTable usertable);
+    public void registrationservice(TblUserTable usertable);
+    public List<TblUserTable> loginservice(TblUserTable usertable);
     
 }
