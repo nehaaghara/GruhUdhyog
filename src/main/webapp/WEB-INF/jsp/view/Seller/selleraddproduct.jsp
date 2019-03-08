@@ -27,13 +27,13 @@
                 <h3 class="box-title">Add Product</h3>
             </div>
             <% List<TblBrand> lstbrandbyuserid=( List<TblBrand>)request.getAttribute("lstbrandbyuserid"); %>
-            <form:form action="${pageContext.servletContext.contextPath}/selleraddproduct" modelAttribute="addProduct" method="get">
-               <form:hidden path="productid" name="productid" />
+            <form:form action="${pageContext.servletContext.contextPath}/selleraddproduct" enctype="multipart/form-data" modelAttribute="addProduct" method="post">
+               <form:hidden path="tblSellerProduct.productid" name="tblSellerProduct.productid" />
                
                 <div class="form-group">
                     
                   <label>Select Brand</label>
-                  <form:select path="tblBrand.brandid" class="questions-category form-control" name="tblBrand.brandid">
+                  <form:select path="tblSellerProduct.tblBrand.brandid" class="questions-category form-control" name="tblSellerProduct.tblBrand.brandid">
                   <c:forEach items="${lstbrandbyuserid}" var="entry">
                   <form:option value="${entry.brandid}">${entry.brandName}</form:option>
                   </c:forEach>
@@ -43,27 +43,27 @@
                <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Name</label>
-                  <form:input path="productname" type="text" name="productname" class="form-control"  />
+                  <form:input path="tblSellerProduct.productname" type="text" name="tblSellerProduct.productname" class="form-control"  />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Price </label>
-                  <form:input path="productprice" type="text" name="productprice" class="form-control"  />
+                  <form:input path="tblSellerProduct.productprice" type="text" name="tblSellerProduct.productprice" class="form-control"  />
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Product Image</label>
-                  <form:input path="productimage" type="text" name="productimage" class="form-control"  />
+                  <input type="file" path="lstSellerProductImages" name="lstSellerProductImages" multiple="multiple" class="form-control"  />
                 </div>
                  <div class="form-group">
                   <label for="exampleInputEmail1">Product Discount </label>
-                  <form:input path="discount" type="text" name="discount" class="form-control"  />
+                  <form:input path="tblSellerProduct.discount" type="text" name="tblSellerProduct.discount" class="form-control"  />
                 </div>
                  <div class="form-group">
                   <label for="exampleInputEmail1">Product Stock</label>
-                  <form:input path="productstock" type="text" name="productstock" class="form-control"  />
+                  <form:input path="tblSellerProduct.productstock" type="text" name="tblSellerProduct.productstock" class="form-control"  />
                 </div>
                  <div class="form-group">
                   <label for="exampleInputEmail1">Product Discription </label>
-                  <form:textarea path="productdiscription" type="text" name="productdiscription" class="form-control" col="20" row="7"></form:textarea>
+                  <form:textarea path="tblSellerProduct.productdiscription" type="text" name="tblSellerProduct.productdiscription" class="form-control" col="20" row="7"></form:textarea>
                 </div>
                 
                 </div>

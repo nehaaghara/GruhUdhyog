@@ -13,35 +13,44 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-  <div class="content-wrapper">
+<div class="content-wrapper">
 
     <section class="content">
-      <div class="row">
-        <!-- left column -->
-        <div class="col-md-6">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Add Seller</h3>
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add Seller</h3>
+                    </div>
+                    <form:form action="${pageContext.servletContext.contextPath}/selleraddbrand" modelAttribute="addBrand" method="get">
+                        <form:hidden path="brandid" name="brandid" />
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="categoryFk">Select Category</label>
+                                <form:select path="categoryFk.categoryPK" title="Category" name="categoryFk.categoryPK" id="categoryFk" class="form-control select2" style="width: 100%;">
+                                    <option value="-1" disabled="true" selected="true">Please Select</option>
+                                    <c:forEach items='${lstCategory}' var='entry'>
+                                        <option value="${entry.categoryPK}">${entry.categoryName}</option> 
+                                    </c:forEach>  
+                                </form:select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Brand Name</label>
+                                <form:input path="brandName" type="text" name="fname" class="form-control"  />
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <form:button type="submit" class="btn btn-primary">Submit</form:button>
+                            </div>
+                    </form:form>
+                </div>
             </div>
-            <form:form action="${pageContext.servletContext.contextPath}/selleraddbrand" modelAttribute="addBrand" method="get">
-               <form:hidden path="brandid" name="brandid" />
-                <div class="box-body">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Brand Name</label>
-                  <form:input path="brandName" type="text" name="fname" class="form-control"  />
-                </div>
-                </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <form:button type="submit" class="btn btn-primary">Submit</form:button>
-              </div>
-            </form:form>
-          </div>
-         </div>
-      </div>
-  </div>
-    </div>
-  <!-- /.content-wrapper -->
-  
+        </div>
+</div>
+</div>
+<!-- /.content-wrapper -->
+
 

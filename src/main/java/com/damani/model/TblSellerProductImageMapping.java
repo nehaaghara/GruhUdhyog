@@ -16,50 +16,56 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author ITMCS-PC
+ * @author ITMCS
  */
 @Entity
-@Table(name = "tbl_brand")
-public class TblBrand implements Serializable{
-    
+@Table(name = "tblsellerproductImageMapping")
+public class TblSellerProductImageMapping implements Serializable {
     @Id
-    @Column(name = "brandid")
+    @Column(name = "sellerProductImagePk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    BigInteger brandid;
+    BigInteger sellerProductImagePk;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="categoryFk")
-    TblCategory categoryFk;
+    @JoinColumn(name="sellerProductFk")
+    TblSellerProduct sellerProductFk;
     
-    @Column(name = "brandname")
-    String brandName;
-
+    @Column(name = "imagePath")
+    String imagePath;
+    
     @Column(name = "createdDate")
     Date createdDate ;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="createdBy")
     TblUserTable tblUserTable;
-    
-     public BigInteger getBrandid() {
-        return brandid;
+
+    public BigInteger getSellerProductImagePk() {
+        return sellerProductImagePk;
     }
 
-    public void setBrandid(BigInteger brandid) {
-        this.brandid = brandid;
+    public void setSellerProductImagePk(BigInteger sellerProductImagePk) {
+        this.sellerProductImagePk = sellerProductImagePk;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public TblSellerProduct getSellerProductFk() {
+        return sellerProductFk;
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setSellerProductFk(TblSellerProduct sellerProductFk) {
+        this.sellerProductFk = sellerProductFk;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public Date getCreatedDate() {
@@ -77,14 +83,7 @@ public class TblBrand implements Serializable{
     public void setTblUserTable(TblUserTable tblUserTable) {
         this.tblUserTable = tblUserTable;
     }
-
-    public TblCategory getCategoryFk() {
-        return categoryFk;
-    }
-
-    public void setCategoryFk(TblCategory categoryFk) {
-        this.categoryFk = categoryFk;
-    }
+    
     
     
 }

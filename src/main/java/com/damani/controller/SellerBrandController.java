@@ -7,6 +7,7 @@ package com.damani.controller;
 
 import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
+import com.damani.service.AdminCategoryService;
 import com.damani.service.SellerBrandService;
 import java.math.BigInteger;
 import java.util.Date;
@@ -27,17 +28,16 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class SellerBrandController {
-    
+
     @Autowired
     SellerBrandService sellerBrandService;
-    
-     @RequestMapping("/selleraddbrand")
-    public ModelAndView addseller(@ModelAttribute("addBrand")  TblBrand tblBrand , HttpServletRequest req)
-    {   
-        TblUserTable tblUserTable=new TblUserTable();
-        Date date=new Date();
-        ModelAndView mv=new ModelAndView();
-        List<TblUserTable> lstuser=(List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
+
+    @RequestMapping("/selleraddbrand")
+    public ModelAndView addseller(@ModelAttribute("addBrand") TblBrand tblBrand, HttpServletRequest req) {
+        TblUserTable tblUserTable = new TblUserTable();
+        Date date = new Date();
+        ModelAndView mv = new ModelAndView();
+        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
         tblBrand.setCreatedDate(date);
         tblBrand.setTblUserTable(tblUserTable);
@@ -45,25 +45,23 @@ public class SellerBrandController {
         mv.setViewName("redirect:/selleraddbrandindex");
         return mv;
     }
-    
+
     @RequestMapping("/showallbrand")
-    public ModelAndView viewbrand(HttpServletRequest req)
-    {
-        List<TblUserTable> lstuser=( List<TblUserTable> )req.getSession(false).getAttribute("lstuser");
-        ModelAndView mv=new ModelAndView();
-        List<TblBrand> lstbrand=sellerBrandService.viewbrandservice(lstuser.get(0).getUserid());
+    public ModelAndView viewbrand(HttpServletRequest req) {
+        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
+        ModelAndView mv = new ModelAndView();
+        List<TblBrand> lstbrand = sellerBrandService.viewbrandservice(lstuser.get(0).getUserid());
         mv.addObject("lstbrand", lstbrand);
         mv.setViewName("com.damani.viewbrandtiles");
         return mv;
     }
-    
-      
-     @RequestMapping(value = "/editbrand/{id}" , method = RequestMethod.GET)
-     public ModelAndView editbrand(@PathVariable("id") BigInteger id, Model model) {
+
+    @RequestMapping(value = "/editbrand/{id}", method = RequestMethod.GET)
+    public ModelAndView editbrand(@PathVariable("id") BigInteger id) {
         ModelAndView mv = new ModelAndView();
         try {
-            List<TblBrand> brand=sellerBrandService.editbrandservice(id);
-            mv.addObject("addBrand",brand.get(0));
+            List<TblBrand> brand = sellerBrandService.editbrandservice(id);
+            mv.addObject("addBrand", brand.get(0));
             mv.setViewName("com.damani.selleraddbrandtiles");
         } catch (Exception e) {
             e.printStackTrace();
@@ -71,19 +69,18 @@ public class SellerBrandController {
 
         return mv;
     }
-     
-       
-        @RequestMapping(value = "/deletebrand/{id}" , method = RequestMethod.GET)
-     public String deleteseller(@PathVariable("id") BigInteger id, Model model) {
-      
+
+    @RequestMapping(value = "/deletebrand/{id}", method = RequestMethod.GET)
+    public String deleteseller(@PathVariable("id") BigInteger id, Model model) {
+
         try {
-            
-           sellerBrandService.deletebrandservice(id);
-           
+
+            sellerBrandService.deletebrandservice(id);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-         return "redirect:/showallbrand";
+        return "redirect:/showallbrand";
     }
 }

@@ -41,8 +41,7 @@ public class TblSellerProduct implements Serializable{
     @Column(name = "productPrice")
     double productprice;
     
-    @Column(name = "productImage")
-    String productimage;
+    
     
     @Column(name = "discount")
     String discount;
@@ -92,13 +91,7 @@ public class TblSellerProduct implements Serializable{
         this.productprice = productprice;
     }
 
-    public String getProductimage() {
-        return productimage;
-    }
-
-    public void setProductimage(String productimage) {
-        this.productimage = productimage;
-    }
+    
 
     public String getDiscount() {
         return discount;

@@ -9,7 +9,7 @@ import com.damani.model.TblBrand;
 import com.damani.service.SellerBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.damani.ripo.SellerBrandRepo;
+import com.damani.repo.SellerBrandRepo;
 import java.math.BigInteger;
 import java.util.List;
 
