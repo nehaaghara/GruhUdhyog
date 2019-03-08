@@ -23,22 +23,65 @@
         <put-attribute name="adminMenu" value="/WEB-INF/jsp/layout/adminMenu.jsp" />
         <put-attribute name="adminFooter" value="/WEB-INF/jsp/layout/adminFooter.jsp" />
     </definition>
-    
     <definition name="com.damani.adminIndex" extends="com.damani.adminLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/adminIndex.jsp"></put-attribute>
         <put-attribute name="title" value="gruhudhyog"></put-attribute>
     </definition>
     <!--Admin Menu-->
     
+
+    <!-- seller tiles  -->
+    <definition name="com.damani.sellerLayout" template="/WEB-INF/jsp/layout/adminLayout.jsp">
+        <put-attribute name="adminHeader" value="/WEB-INF/jsp/layout/adminHeader.jsp" />
+        <put-attribute name="adminMenu" value="/WEB-INF/jsp/layout/sellerMenu.jsp" />
+        <put-attribute name="adminFooter" value="/WEB-INF/jsp/layout/adminFooter.jsp" />
+    </definition>
+     <!-- seller tiles  -->
+      <!-- sellerindex tiles  -->
+     <definition name="com.damani.sellerIndex" extends="com.damani.sellerLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/adminIndex.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+      <!-- sellerindex tiles  -->
+      <!-- add brand seller side  -->
+     <definition name="com.damani.selleraddbrandtiles" extends="com.damani.sellerLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Seller/selleraddbrand.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+     <!-- add brand seller side  -->
+       <!-- add brand seller side  -->
+     <definition name="com.damani.selleraddproducttiles" extends="com.damani.sellerLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Seller/selleraddproduct.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+     <!-- add brand seller side  -->
+       <!-- view brand seller side  -->
+     <definition name="com.damani.viewbrandtiles" extends="com.damani.sellerLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Seller/viewallbrand.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+     <!-- view brand seller side  -->
+       <!-- view product seller side  -->
+     <definition name="com.damani.viewproducttiles" extends="com.damani.sellerLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Seller/viewallproduct.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+     <!-- view product seller side  -->
+     
+    <!-- add seller admin side  -->
+
+
      <definition name="com.damani.adminaddsellertiles" extends="com.damani.adminLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/adminaddseller.jsp"></put-attribute>
         <put-attribute name="title" value="gruhudhyog"></put-attribute>
     </definition>
+     <!-- add seller admin side  -->
+      <!-- show seller admin side  -->
       <definition name="com.damani.showallsellertiles" extends="com.damani.adminLayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/showallselleradmin.jsp"></put-attribute>
         <put-attribute name="title" value="gruhudhyog"></put-attribute>
     </definition>
-    
+      <!-- show seller admin side  -->
     <!-- Registration tiles -->
     <definition name="com.damani.register" extends="com.damani.userlayout">
         <put-attribute name="body" value="/WEB-INF/jsp/login/registration.jsp"></put-attribute>

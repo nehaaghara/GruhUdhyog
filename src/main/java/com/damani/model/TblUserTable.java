@@ -7,6 +7,7 @@ package com.damani.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,8 +23,10 @@ import javax.persistence.Table;
  * @author ITMCS-PC
  */
 @Entity
-@Table(name = "tbl_signup")
-public class TblUserTable implements Serializable {
+
+@Table(name = "tbl_User")
+public class TblUserTable implements Serializable{
+   
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +51,18 @@ public class TblUserTable implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "roleFk")
     TblUserRole tblUserRole;
+    
+    @Column(name = "createdDate")
+    Date createdDate = new Date();
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public BigInteger getUserid() {
         return userid;
     }

@@ -1,0 +1,4 @@
+Executed SQL Statement : create table `gruhudhyog`.`tblsellerproduct`(
+`productId` bigint(20) NOT NULL AUTO_INCREMENT , `brandFK` bigint(20) , `productName` varchar(20) , `productPrice` double(20) , `productImage` varchar(20) , `discount` varchar(20) , `productStock` int(20) , `productDiscription` varchar(20) , `createdDate` date , `createdBy` bigint(20) , PRIMARY KEY (`productId`))   
+Error Number : 1064 
+Error Message: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') , `productImage` varchar(20) , `discount` varchar(20) , `productStock` int(20)' at line 2 

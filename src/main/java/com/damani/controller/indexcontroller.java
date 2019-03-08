@@ -6,6 +6,8 @@
 package com.damani.controller;
 
 
+import com.damani.model.TblBrand;
+import com.damani.model.TblSellerProduct;
 import com.damani.model.TblUserTable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,5 +50,13 @@ public class indexcontroller {
       mv.setViewName("com.damani.adminaddsellertiles");
       return mv;
   }
-    
+  
+  @RequestMapping(value="/selleraddbrandindex",method = RequestMethod.GET)
+  public ModelAndView selleraddbrand()
+  {
+      ModelAndView mv=new ModelAndView();
+      mv.addObject("addBrand", new TblBrand());
+      mv.setViewName("com.damani.selleraddbrandtiles");
+      return mv;
+  }
 }
