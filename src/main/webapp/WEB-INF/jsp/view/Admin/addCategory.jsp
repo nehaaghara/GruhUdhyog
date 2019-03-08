@@ -32,7 +32,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Category Details</h3>
                     </div>
-                    <form:form role="form" id="form" action="${pageContext.servletContext.contextPath}/save" method="post"  modelAttribute="tblcategory">
+                    <form:form role="form" id="form" action="${pageContext.servletContext.contextPath}/save" method="post" onsubmit="return submitCategory();" modelAttribute="tblcategory" enctype="multipart/form-data">
                         <form:hidden path="categoryPK" name="categoryPK" id="categoryPK"/>
                         <div class="box-body">
                             <div id="divAltMsg"></div>
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                          
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
@@ -59,4 +59,5 @@
         </div>
     </section>
 </div>
-<!-- datepicker -->
+<script src="${pageContext.servletContext.contextPath}/webresource/admin/dist/js/categoryJs.js"></script>
+<script src="${pageContext.servletContext.contextPath}/webresource/admin/dist/js/commonJs.js"></script>

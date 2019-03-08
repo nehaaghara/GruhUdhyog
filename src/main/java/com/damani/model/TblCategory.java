@@ -7,11 +7,16 @@ package com.damani.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.sql.Blob;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +34,41 @@ public class TblCategory implements Serializable {
 
     @Column(name = "categoryName")
     String categoryName;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "createdBy")
+    TblUserTable createdBy;
+
+    @Column(name = "createdOn")
+    Date createdOn;
+    
+    @Column(name = "image")
+    String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public TblUserTable getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(TblUserTable createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
 
     public BigInteger getCategoryPK() {
         return categoryPK;

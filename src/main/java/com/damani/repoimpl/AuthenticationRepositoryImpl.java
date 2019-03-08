@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.ripoimpl;
+package com.damani.repoimpl;
 
 
 import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
 import com.damani.model.TblUserTable;
 
-import com.damani.ripo.AuthenticationRipo;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.damani.repo.AuthenticationRepository;
 
 /**
  *
  * @author ITMCS-PC
  */
 @Repository
-public class AuthenticationRipoImpl implements  AuthenticationRipo{
+public class AuthenticationRepositoryImpl implements  AuthenticationRepository{
     @Autowired
     CommonDAO commonDAO;
     

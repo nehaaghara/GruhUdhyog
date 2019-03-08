@@ -13,7 +13,7 @@
                 <img src="${pageContext.servletContext.contextPath}/webresource/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>${sessionScope.lstuser.get(0).first_name}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -31,15 +31,16 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
+            
+            <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Seller</span>
+                    <i class="fa fa-laptop"></i> <span>Seller</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active"><a href="${pageContext.servletContext.contextPath}/adminaddsellerindex"><i class="fa fa-circle-o"></i> Add Seller</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/adminaddsellerindex"><i class="fa fa-circle-o"></i> Add Seller</a></li>
                     <li><a href="${pageContext.servletContext.contextPath}/showallsellercontroller"><i class="fa fa-circle-o"></i> View Seller</a></li>
                 </ul>
             </li>
@@ -53,8 +54,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${pageContext.servletContext.contextPath}/add"><i class="fa fa-circle-o"></i> Add Category</a></li>
-                    <li><a href="${pageContext.servletContext.contextPath}/view"><i class="fa fa-circle-o"></i> View Category</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/addcategory"><i class="fa fa-circle-o"></i> Add Category</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/viewcategory"><i class="fa fa-circle-o"></i> View Category</a></li>
 
                 </ul>
             </li>
@@ -67,8 +68,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${pageContext.servletContext.contextPath}/adminpostque1"><i class="fa fa-circle-o"></i> Add Product</a></li>
-                    <li><a href="${pageContext.servletContext.contextPath}/showallquestion1"><i class="fa fa-circle-o"></i>View Product</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/addproduct"><i class="fa fa-circle-o"></i> Add Product</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/viewproduct"><i class="fa fa-circle-o"></i>View Product</a></li>
 
                 </ul>
         </ul>

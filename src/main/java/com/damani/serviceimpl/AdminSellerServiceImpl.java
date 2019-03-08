@@ -6,12 +6,12 @@
 package com.damani.serviceimpl;
 
 import com.damani.model.TblUserTable;
-import com.damani.ripo.AdminSellerRipo;
 import com.damani.service.AdminSellerService;
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.damani.repo.AdminSellerRepository;
 
 /**
  *
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class AdminSellerServiceImpl implements AdminSellerService{
 
     @Autowired
-    AdminSellerRipo adminSellerRipo;
+    AdminSellerRepository adminSellerRipo;
     
     @Override
     public void adminaddseller(TblUserTable usertable) {

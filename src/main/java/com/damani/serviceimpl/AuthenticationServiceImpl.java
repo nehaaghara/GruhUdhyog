@@ -8,11 +8,11 @@ package com.damani.serviceimpl;
 
 
 import com.damani.model.TblUserTable;
-import com.damani.ripo.AuthenticationRipo;
 import com.damani.service.AuthenticationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.damani.repo.AuthenticationRepository;
 
 /**
  *
@@ -21,7 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService{
     @Autowired
-    AuthenticationRipo  authenticationRipo; 
+    AuthenticationRepository  authenticationRipo; 
    
     @Override
     public void registrationservice(TblUserTable usertable) {

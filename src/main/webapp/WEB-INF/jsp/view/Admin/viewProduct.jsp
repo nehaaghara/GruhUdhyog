@@ -13,11 +13,11 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Category
+            Product
             <small>view</small>
         </h1>
         <br>
-        <input type="button" class="btn btn-primary" name="addcategory" value="Add Category" onclick="window.location.href = '${pageContext.servletContext.contextPath}/addcategory'">
+        <input type="button" class="btn btn-primary" name="addproduct" value="Add Product" onclick="window.location.href = '${pageContext.servletContext.contextPath}/addproduct'">
     </section>
     <section class="content">
         <div class="row">
@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th>Category Name</th>
+                                    <th>Product Name</th>
                                     <th>Created By</th>
                                     <th>Created On</th>
                                     <th>Edit</th>
@@ -61,14 +62,15 @@
                             </thead>
                             <tbody>
                                 <c:set var="count" value="1"/>
-                                <c:forEach items="${lstCategory}" var="entry">
+                                <c:forEach items="${lstProducts}" var="entry">
                                     <tr>
                                         <td>${count}</td>
-                                        <td>${entry.categoryName}</td>
+                                        <td>${entry.categoryFK.categoryName}</td>
+                                        <td>${entry.productName}</td>
                                         <td>${entry.createdBy.first_name}</td>
                                         <td>${entry.createdOn}</td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/edit/${entry.categoryPK}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/delete/${entry.categoryPK}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/editproduct/${entry.productPK}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/deleteproduct/${entry.productPK}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
 
                                     </tr>
                                     <c:set var="count" value="${count+1}"/>
@@ -88,6 +90,7 @@
 
 </div>
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/dist/js/commonJs.js"></script>
+
 <script>
             $(document).ready(function () {
                 $('#example').DataTable();

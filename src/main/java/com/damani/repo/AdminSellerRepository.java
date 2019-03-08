@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.ripo;
+package com.damani.repo;
 
 import com.damani.model.TblUserTable;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Service;
  * @author ITMCS-PC
  */
 @Service
-public interface AuthenticationRipo {
-    public void registrationripo(TblUserTable usertable);
-    public List<TblUserTable> loginripo(TblUserTable usertable);
+public interface AdminSellerRepository {
+    
+    public void addseller(TblUserTable usertable);
+    public List<TblUserTable> viewseller();
+    public List<TblUserTable> editsellerripo(BigInteger id);
+    public void deletesellerripo(BigInteger id);
 }
