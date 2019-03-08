@@ -1,8 +1,10 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
-*/
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.damani.model;
 
 import java.io.Serializable;
@@ -13,47 +15,51 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
-*
-* @author ITMCS
-*/
+
+ *
+ * @author ITMCS
+ */
+
+
 @Entity
 @Table(name = "tbl_userrole")
 public class TblUserRole implements Serializable{
 
-@Id
-@Column(name = "rolePK")
-BigInteger rolePK;
 
-@Column(name = "roleName")
-String roleName;
+    @Id
+    @Column(name = "rolePK")
+    BigInteger rolePK;
 
-@Column(name = "isActive")
-Integer isActive;
+    @Column(name = "roleName")
+    String roleName;
 
-public BigInteger getRolePK() {
-return rolePK;
-}
+    @Column(name = "isActive")
+    Integer isActive;
 
-public void setRolePK(BigInteger rolePK) {
-this.rolePK = rolePK;
-}
+    public BigInteger getRolePK() {
+        return rolePK;
+    }
 
-public String getRoleName() {
-return roleName;
-}
+    public void setRolePK(BigInteger rolePK) {
+        this.rolePK = rolePK;
+    }
 
-public void setRoleName(String roleName) {
-this.roleName = roleName;
-}
+    public String getRoleName() {
+        return roleName;
+    }
 
-public Integer getIsActive() {
-return isActive;
-}
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
 
-public void setIsActive(Integer isActive) {
-this.isActive = isActive;
-}
+    public Integer getIsActive() {
+        return isActive;
+    }
 
+    public void setIsActive(Integer isActive) {
+        this.isActive = isActive;
+    }
 
+   
 
 }

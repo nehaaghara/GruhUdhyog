@@ -91,6 +91,18 @@
     </definition>
     <!-- login tiles -->
     
+    <!--Add  category tiles -->
+    <definition name="com.damani.addCategory" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/addCategory.jsp"></put-attribute>
+    </definition>
+    <!-- Add category tiles -->
+    
+    <!--view  category tiles -->
+    <definition name="com.damani.viewCategory" extends="com.damani.adminLayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/Admin/viewCategory.jsp"></put-attribute>
+    </definition>
+    <!-- view category tiles -->
+    
     <!-- wishList tiles -->
     <definition name="com.damani.wishList" extends="com.damani.userlayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/wishList.jsp"></put-attribute>

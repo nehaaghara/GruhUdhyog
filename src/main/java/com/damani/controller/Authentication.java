@@ -26,9 +26,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class Authentication {
+
     @Autowired
     AuthenticationService authenticationService;
-    
+
  
     @RequestMapping("/register")
     public String  registration(HttpServletRequest req)
@@ -42,6 +43,7 @@ public class Authentication {
         String email=req.getParameter("email");
         String password=req.getParameter("password");
         BigInteger phonenumber=new BigInteger(req.getParameter("phone"));
+
         usertable.setFirst_name(firstname);
         usertable.setLast_name(lastname);
         usertable.setEmail_address(email);
@@ -52,20 +54,20 @@ public class Authentication {
         authenticationService.registrationservice(usertable);
         return "redirect:/loginindex";
     }
-    
+
     @RequestMapping("/loginauthentication")
-    public ModelAndView  loginauthentication(HttpServletRequest req)
-    {
-        ModelAndView mv=new ModelAndView();
-        TblUserTable usertable=new TblUserTable();
-        String email=req.getParameter("email");
-        String password=req.getParameter("password");
+    public ModelAndView loginauthentication(HttpServletRequest req) {
+        ModelAndView mv = new ModelAndView();
+        TblUserTable usertable = new TblUserTable();
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
         usertable.setEmail_address(email);
         usertable.setPassword(password);
-        List<TblUserTable> lstuser= authenticationService.loginservice(usertable);
-        System.out.println("lst"+lstuser.size());
-        HttpSession session=req.getSession(true);
+        List<TblUserTable> lstuser = authenticationService.loginservice(usertable);
+        System.out.println("lst" + lstuser.size());
+        HttpSession session = req.getSession(true);
         session.setAttribute("lstuser", lstuser);
+
         if(!lstuser.isEmpty())
         {
                 if(lstuser.get(0).getTblUserRole().getRolePK().equals(new BigInteger("1")))
@@ -83,6 +85,7 @@ public class Authentication {
         }
         else
         {
+
             mv.setViewName("com.damani.login");
         }
         return mv;

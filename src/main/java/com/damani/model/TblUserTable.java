@@ -16,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,24 +23,26 @@ import javax.persistence.Table;
  * @author ITMCS-PC
  */
 @Entity
+
 @Table(name = "tbl_User")
 public class TblUserTable implements Serializable{
    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="userid",nullable=false)
+    @Column(name = "userid", nullable = false)
     BigInteger userid;
-    
-    @Column(name="first_name")
+
+    @Column(name = "first_name")
     String first_name;
-    
-    @Column(name="last_name")
+
+    @Column(name = "last_name")
     String last_name;
-    
-    @Column(name="email_address")
+
+    @Column(name = "email_address")
     String email_address;
-    
-    @Column(name="password")
+
+    @Column(name = "password")
     String password;
     
     @Column(name="phonenumber")
@@ -118,5 +119,4 @@ public class TblUserTable implements Serializable{
         this.tblUserRole = tblUserRole;
     }
 
-    
 }

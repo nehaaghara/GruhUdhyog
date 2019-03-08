@@ -53,8 +53,8 @@
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="${pageContext.servletContext.contextPath}/signup"><i class="fa fa-circle-o"></i> Add Category</a></li>
-                    <li><a href="${pageContext.servletContext.contextPath}/showalldata1"><i class="fa fa-circle-o"></i> View Category</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/add"><i class="fa fa-circle-o"></i> Add Category</a></li>
+                    <li><a href="${pageContext.servletContext.contextPath}/view"><i class="fa fa-circle-o"></i> View Category</a></li>
 
                 </ul>
             </li>
