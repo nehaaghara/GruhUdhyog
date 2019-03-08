@@ -4,6 +4,7 @@
     Author     : ITMCS-Java
 --%>
 
+<%@page import="com.damani.model.TblBrand"%>
 <%@page import="com.damani.model.TblUserTable"%>
 <%@page import="java.util.List"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -15,11 +16,11 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Seller List
+            Brand List
             <small>view</small>
         </h1>
         <br>
-        <input type="button" class="btn btn-primary" name="addseller" value="Add Seller" onclick="window.location.href = '${pageContext.servletContext.contextPath}/addseller'">
+        <input type="button" class="btn btn-primary" name="addbrand" value="Add Brand" onclick="window.location.href = '${pageContext.servletContext.contextPath}/selleraddbrandindex'">
     </section>
     <section class="content">
         <div class="row">
@@ -28,34 +29,26 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="divAltMsg"></div>
-
+                        <% List<TblBrand> lstbrand=(List<TblBrand>) request.getAttribute("lstbrand"); %>
                         <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>userId</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Password</th>
-                                    <th>Phone Number</th>
-                                    <th>Role name</th>
-                                    <th>Role name</th>
-                                    <th>Role name</th>
+                                    <th>BrandId</th>
+                                    <th>Brand Name</th>
+                                    <th>Created Date</th>
+                                    <th>Edit Brand</th>
+                                    <th>Delete Brand</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <c:set var="count" value="1"/>
-                                <c:forEach items="${lstseller}" var="seller">
+                                <c:forEach items="${lstbrand}" var="lstbrand">
                                     <tr>
-                                        <td>${seller.userid}</td>
-                                        <td>${seller.first_name}</td>
-                                        <td>${seller.last_name}</td>
-                                        <td>${seller.email_address}</td>
-                                        <td>${seller.password}</td>
-                                        <td>${seller.phonenumber}</td>
-                                        <td>${seller.tblUserRole.rolePK}</td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/editseller/${seller.userid}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/deleteseller/${seller.userid}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
+                                        <td>${lstbrand.brandid}</td>
+                                        <td>${lstbrand.brandName}</td>
+                                        <td>${lstbrand.createdDate}</td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/editbrand/${lstbrand.brandid}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/deletebrand/${lstbrand.brandid}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                     <c:set var="count" value="${count+1}"/>
                                 </c:forEach>

@@ -5,9 +5,12 @@
  */
 package com.damani.controller;
 
+import com.damani.model.TblUserRole;
 import com.damani.model.TblUserTable;
 import com.damani.service.AuthenticationService;
 import java.math.BigInteger;
+import java.util.Date;
+
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,12 +29,14 @@ public class Authentication {
     @Autowired
     AuthenticationService authenticationService;
     
-   
-    
+ 
     @RequestMapping("/register")
     public String  registration(HttpServletRequest req)
     {
-         TblUserTable usertable=new TblUserTable();
+        TblUserRole tblUserRole = new TblUserRole();
+        tblUserRole.setRolePK(new BigInteger("3"));
+        Date date=new Date();
+        TblUserTable usertable=new TblUserTable();
         String firstname=req.getParameter("fname");
         String lastname=req.getParameter("lname");
         String email=req.getParameter("email");
@@ -42,6 +47,8 @@ public class Authentication {
         usertable.setEmail_address(email);
         usertable.setPassword(password);
         usertable.setPhonenumber(phonenumber);
+        usertable.setCreatedDate(date);
+        usertable.setTblUserRole(tblUserRole);
         authenticationService.registrationservice(usertable);
         return "redirect:/loginindex";
     }
@@ -65,7 +72,11 @@ public class Authentication {
                 {
                     mv.setViewName("com.damani.adminIndex");
                 }
-                else
+                if(lstuser.get(0).getTblUserRole().getRolePK().equals(new BigInteger("2")))
+                {
+                        mv.setViewName("com.damani.sellerIndex");    
+                }
+                if(lstuser.get(0).getTblUserRole().getRolePK().equals(new BigInteger("3")))
                 {
                     mv.setViewName("com.damani.userindex");
                 }

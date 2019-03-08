@@ -48,7 +48,6 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery/dist/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
 <script src="${pageContext.servletContext.contextPath}/webresource/admin/bower_components/jquery-ui/jquery-ui.min.js"></script>
 
 </head>
