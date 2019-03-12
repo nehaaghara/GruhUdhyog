@@ -22,7 +22,7 @@ import javax.persistence.Table;
  * @author ITMCS
  */
 @Entity
-@Table(name = "tbl_adminproductimagemapping")
+@Table(name = "tbl_productimagemapping")
 public class TblAdminProductImageMapping {
 
     @Id

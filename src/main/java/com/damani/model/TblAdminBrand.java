@@ -23,7 +23,7 @@ import javax.persistence.Table;
  * @author ITMCS
  */
 @Entity
-@Table(name = "tbl_adminbrand")
+@Table(name = "tbl_brand")
 public class TblAdminBrand implements Serializable{
 
     @Id
