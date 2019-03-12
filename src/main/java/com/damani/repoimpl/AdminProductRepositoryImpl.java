@@ -39,6 +39,7 @@ public class AdminProductRepositoryImpl implements AdminProductRepository{
     public TblProduct fetchProductById(BigInteger productPK) {
       List<TblProduct> lstTblProduct = commonDAO.findEntity(TblProduct.class,"productPK",OperationTypeEnum.EQ,productPK);
       if(!lstTblProduct.isEmpty()){
+          System.out.println("in repo if");
           return lstTblProduct.get(0);
       }
       return null;
@@ -52,6 +53,12 @@ public class AdminProductRepositoryImpl implements AdminProductRepository{
     @Override
     public void updateProductById(TblProduct tblProduct) {
         commonDAO.update(tblProduct);
+    }
+
+    @Override
+    public List<TblProduct> fetchAllProductById(BigInteger createdBy) {
+        List<TblProduct> lstProduct = commonDAO.findEntity(TblProduct.class,"createdBy.userid",OperationTypeEnum.EQ,createdBy);
+        return lstProduct;
     }
     
 }

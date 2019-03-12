@@ -6,7 +6,6 @@
 package com.damani.webbean;
 
 import com.damani.model.TblSellerProduct;
-import com.damani.model.TblSellerProductImageMapping;
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 

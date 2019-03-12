@@ -6,6 +6,7 @@
 package com.damani.repo;
 
 import com.damani.model.TblProduct;
+import com.damani.model.TblUserTable;
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,8 @@ public interface AdminProductRepository {
     public TblProduct saveProduct(TblProduct tblProduct);
     
     public List<TblProduct> fetchAllProduct();
+    
+    public List<TblProduct> fetchAllProductById(BigInteger createdBy);
     
     public TblProduct fetchProductById(BigInteger productPK);
     

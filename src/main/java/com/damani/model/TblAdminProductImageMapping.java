@@ -5,7 +5,6 @@
  */
 package com.damani.model;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,26 +22,27 @@ import javax.persistence.Table;
  * @author ITMCS
  */
 @Entity
-@Table(name = "tbl_sellerproductimagemapping")
-public class TblSellerProductImageMapping implements Serializable {
+@Table(name = "tbl_adminproductimagemapping")
+public class TblAdminProductImageMapping {
+
     @Id
-    @Column(name = "sellerProductImagePk")
+    @Column(name = "adminProductImagePk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     BigInteger sellerProductImagePk;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="sellerProductFk")
-    TblSellerProduct sellerProductFk;
-    
-    @Column(name = "imagePath")
-    String imagePath;
-    
-    @Column(name = "createdDate")
-    Date createdDate ;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="createdBy")
-    TblUserTable tblUserTable;
+    @JoinColumn(name = "adminProductFk")
+    TblProduct adminProductFk;
+
+    @Column(name = "imagePath")
+    String imagePath;
+
+    @Column(name = "createdDate")
+    Date createdDate;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "createdBy")
+    TblUserTable createdBy;
 
     public BigInteger getSellerProductImagePk() {
         return sellerProductImagePk;
@@ -52,12 +52,12 @@ public class TblSellerProductImageMapping implements Serializable {
         this.sellerProductImagePk = sellerProductImagePk;
     }
 
-    public TblSellerProduct getSellerProductFk() {
-        return sellerProductFk;
+    public TblProduct getAdminProductFk() {
+        return adminProductFk;
     }
 
-    public void setSellerProductFk(TblSellerProduct sellerProductFk) {
-        this.sellerProductFk = sellerProductFk;
+    public void setAdminProductFk(TblProduct adminProductFk) {
+        this.adminProductFk = adminProductFk;
     }
 
     public String getImagePath() {
@@ -76,14 +76,14 @@ public class TblSellerProductImageMapping implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public TblUserTable getTblUserTable() {
-        return tblUserTable;
+    public TblUserTable getCreatedBy() {
+        return createdBy;
     }
 
-    public void setTblUserTable(TblUserTable tblUserTable) {
-        this.tblUserTable = tblUserTable;
+    public void setCreatedBy(TblUserTable createdBy) {
+        this.createdBy = createdBy;
     }
-    
-    
-    
+
+  
+
 }

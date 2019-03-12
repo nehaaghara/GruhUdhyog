@@ -20,18 +20,21 @@ import org.springframework.stereotype.Service;
  * @author ITMCS
  */
 @Service
-public class AdminProductServiceImpl implements AdminProductService{
+public class AdminProductServiceImpl implements AdminProductService {
 
     @Autowired
     AdminProductRepository adminProductRepository;
-    
+
     @Override
-    public String saveProduct(TblProduct tblProduct,TblUserTable tblUserTable) {
-        
+    public String saveProduct(TblProduct tblProduct, TblUserTable tblUserTable) {
+        System.out.println("in service");
         tblProduct.setCategoryFK(tblProduct.getCategoryFK());
-        System.out.println("category fk"+tblProduct.getCategoryFK().getCategoryPK());
+        System.out.println("category::"+tblProduct.getCategoryFK().getCategoryPK());
         tblProduct.setProductName(tblProduct.getProductName());
-        tblProduct.setIsActive(1);
+        tblProduct.setProductPrice(tblProduct.getProductPrice());
+        tblProduct.setDiscount(tblProduct.getDiscount());
+        tblProduct.setProductStock(tblProduct.getProductStock());
+        tblProduct.setProductDiscription(tblProduct.getProductDiscription());
         tblProduct.setCreatedBy(tblUserTable);
         tblProduct.setCreatedOn(new Date());
         adminProductRepository.saveProduct(tblProduct);
@@ -45,30 +48,39 @@ public class AdminProductServiceImpl implements AdminProductService{
 
     @Override
     public TblProduct fetchProductById(BigInteger productPK) {
-         return adminProductRepository.fetchProductById(productPK);
+        System.out.println("IN SERVICE");
+        return adminProductRepository.fetchProductById(productPK);
     }
 
     @Override
     public String deleteProductById(BigInteger productPK) {
-            TblProduct tblProduct = new TblProduct();
-            tblProduct.setProductPK(productPK);
-            if(tblProduct.getProductPK()!=null){
-                adminProductRepository.deleteProductById(tblProduct);
-                return "Category Deleted Successfully";
-            }
-            return null;
+        TblProduct tblProduct = new TblProduct();
+        tblProduct.setProductPK(productPK);
+        if (tblProduct.getProductPK() != null) {
+            adminProductRepository.deleteProductById(tblProduct);
+            return "Category Deleted Successfully";
+        }
+        return null;
     }
 
     @Override
     public String updateProductById(TblProduct tblProduct, TblUserTable tblUserTable) {
-           TblProduct tblnewProduct = adminProductRepository.fetchProductById(tblProduct.getProductPK());
-           tblnewProduct.setCategoryFK(tblProduct.getCategoryFK());
-           tblnewProduct.setProductName(tblProduct.getProductName());
-           tblnewProduct.setIsActive(1);
-           tblnewProduct.setCreatedBy(tblUserTable);
-           tblnewProduct.setCreatedOn(new Date());
-           adminProductRepository.updateProductById(tblnewProduct);
-           return "Product Updated Successfully";
+        TblProduct tblnewProduct = adminProductRepository.fetchProductById(tblProduct.getProductPK());
+        tblnewProduct.setCategoryFK(tblProduct.getCategoryFK());
+        tblnewProduct.setProductName(tblProduct.getProductName());
+        tblnewProduct.setProductPrice(tblProduct.getProductPrice());
+        tblnewProduct.setDiscount(tblProduct.getDiscount());
+        tblnewProduct.setProductStock(tblProduct.getProductStock());
+        tblnewProduct.setProductDiscription(tblProduct.getProductDiscription());
+        tblnewProduct.setCreatedBy(tblUserTable);
+        tblnewProduct.setCreatedOn(new Date());
+        adminProductRepository.updateProductById(tblnewProduct);
+        return "Product Updated Successfully";
     }
-    
+
+    @Override
+    public List<TblProduct> fetchAllProductByUserId(BigInteger createdBy) {
+       return adminProductRepository.fetchAllProductById(createdBy);
+    }
+
 }

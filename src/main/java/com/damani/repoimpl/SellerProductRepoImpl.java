@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.ripoimpl;
+package com.damani.repoimpl;
 
 import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
 import com.damani.model.TblBrand;
 import com.damani.model.TblSellerProduct;
 import com.damani.model.TblUserTable;
-import com.damani.ripo.SellerProductRepo;
+import com.damani.repo.SellerProductRepo;
+
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

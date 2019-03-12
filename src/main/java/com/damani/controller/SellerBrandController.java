@@ -5,9 +5,12 @@
  */
 package com.damani.controller;
 
+import com.damani.model.TblAdminBrand;
 import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
+import com.damani.service.AdminBrandService;
 import com.damani.service.AdminCategoryService;
+import com.damani.service.AdminProductService;
 import com.damani.service.SellerBrandService;
 import java.math.BigInteger;
 import java.util.Date;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -30,57 +34,75 @@ import org.springframework.web.servlet.ModelAndView;
 public class SellerBrandController {
 
     @Autowired
-    SellerBrandService sellerBrandService;
+    AdminProductService adminProductService;
 
-    @RequestMapping("/selleraddbrand")
-    public ModelAndView addseller(@ModelAttribute("addBrand") TblBrand tblBrand, HttpServletRequest req) {
+    @Autowired
+    AdminBrandService adminBrandService;
+
+    @RequestMapping(value = "/selleraddbrand", method = RequestMethod.POST)
+    public String addseller(@ModelAttribute("addsellerBrand") TblAdminBrand addtblsellerBrand, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         TblUserTable tblUserTable = new TblUserTable();
-        Date date = new Date();
-        ModelAndView mv = new ModelAndView();
-        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
+        List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
-        tblBrand.setCreatedDate(date);
-        tblBrand.setTblUserTable(tblUserTable);
-        sellerBrandService.addbrandservice(tblBrand);
-        mv.setViewName("redirect:/selleraddbrandindex");
-        return mv;
+
+        String response = null;
+        if (addtblsellerBrand.getBrandPk() == null) {
+            response = adminBrandService.saveAdminBrand(addtblsellerBrand, tblUserTable);
+            redirectAttributes.addFlashAttribute("SuccessMessage", response);
+        } else {
+            response = adminBrandService.updateBrandById(addtblsellerBrand, tblUserTable);
+            redirectAttributes.addFlashAttribute("UpdateMessage", response);
+        }
+
+        if (request.getParameter("save") != null) {
+            return "redirect:/showallbrand";
+        } else if (request.getParameter("saveAndNew") != null) {
+            return "redirect:/selleraddbrandindex";
+        }
+        return "redirect:/showallbrand";
+
     }
 
     @RequestMapping("/showallbrand")
-    public ModelAndView viewbrand(HttpServletRequest req) {
+    public String viewbrand(HttpServletRequest req, Model model) {
         List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
-        ModelAndView mv = new ModelAndView();
-        List<TblBrand> lstbrand = sellerBrandService.viewbrandservice(lstuser.get(0).getUserid());
-        mv.addObject("lstbrand", lstbrand);
-        mv.setViewName("com.damani.viewbrandtiles");
-        return mv;
+        Object lstBrands = adminBrandService.fetchBrandsByID(lstuser.get(0).getUserid());
+        model.addAttribute("lstBrands", lstBrands);
+        return "com.damani.viewbrandtiles";
     }
 
-    @RequestMapping(value = "/editbrand/{id}", method = RequestMethod.GET)
-    public ModelAndView editbrand(@PathVariable("id") BigInteger id) {
-        ModelAndView mv = new ModelAndView();
+    @RequestMapping(value = "/editbrand/{brandPk}", method = RequestMethod.GET)
+    public String editbrand(@PathVariable("brandPk") BigInteger brandPk, Model model) {
         try {
-            List<TblBrand> brand = sellerBrandService.editbrandservice(id);
-            mv.addObject("addBrand", brand.get(0));
-            mv.setViewName("com.damani.selleraddbrandtiles");
+
+            Object response = adminBrandService.fetchAdminBrandById(brandPk);
+            model.addAttribute("addsellerBrand", response);
+
+            Object lstProducts = adminProductService.fetchAllProduct();
+            model.addAttribute("lstProducts", lstProducts);
+
+            return "com.damani.selleraddbrandtiles";
         } catch (Exception e) {
             e.printStackTrace();
+            return "Ettor";
         }
-
-        return mv;
+    
     }
 
-    @RequestMapping(value = "/deletebrand/{id}", method = RequestMethod.GET)
-    public String deleteseller(@PathVariable("id") BigInteger id, Model model) {
-
-        try {
-
-            sellerBrandService.deletebrandservice(id);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    @RequestMapping(value = "/deletebrand/{brandPk}", method = RequestMethod.GET)
+    public String deleteseller(@PathVariable("brandPk") BigInteger brandPk, Model model,RedirectAttributes redirectAttributes) {
+        String response = adminBrandService.deleteBrandById(brandPk);
+        redirectAttributes.addFlashAttribute("DeleteMessage", response);
         return "redirect:/showallbrand";
+    }
+    
+     @RequestMapping(value = "/updatesellerbrand/{brandPk}", method = RequestMethod.POST)
+    public String updateSellerBrand(@PathVariable("brandPk") BigInteger brandPk, @ModelAttribute TblAdminBrand addsellerBrand, HttpServletRequest request) {
+        TblUserTable tblUserTable = new TblUserTable();
+        List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
+        tblUserTable.setUserid(lstuser.get(0).getUserid());
+
+        String response = adminBrandService.updateBrandById(addsellerBrand, tblUserTable);
+        return "redirect:/viewadminbrand";
     }
 }

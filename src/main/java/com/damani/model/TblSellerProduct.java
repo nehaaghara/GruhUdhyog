@@ -41,8 +41,6 @@ public class TblSellerProduct implements Serializable{
     @Column(name = "productPrice")
     double productprice;
     
-    
-    
     @Column(name = "discount")
     String discount;
     

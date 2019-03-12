@@ -8,7 +8,7 @@
 
 
 <%@page import="com.damani.model.TblSellerProduct"%>
-<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>   
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -22,7 +22,7 @@
             <small>view</small>
         </h1>
         <br>
-        <input type="button" class="btn btn-primary" name="addbrand" value="Add Brand" onclick="window.location.href = '${pageContext.servletContext.contextPath}/selleraddproduct'">
+        <input type="button" class="btn btn-primary" name="addbrand" value="Add Brand" onclick="window.location.href = '${pageContext.servletContext.contextPath}/sellerproductpage'">
     </section>
     <section class="content">
         <div class="row">
@@ -31,15 +31,12 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div id="divAltMsg"></div>
-                        <% List<TblSellerProduct> lstproduct=(List<TblSellerProduct>) request.getAttribute("lstproduct"); %>
-                        <table id="example" class="display" style="width:100%">
+                          <table id="example" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Product Id</th>
-                                    <th>Brand Name</th>
-                                    <th>product Name</th>
+                                     <th>product Name</th>
                                     <th>product Price</th>
-                                    <th>product Image</th>
                                     <th>product Discount</th>
                                     <th>product Stock</th>
                                     <th>product Discription</th>
@@ -53,18 +50,16 @@
                                 <c:set var="count" value="1"/>
                                 <c:forEach items="${lstproduct}" var="product">
                                     <tr>
-                                        <td>${product.productid}</td>
-                                        <td>${product.tblBrand.brandName}</td>
-                                        <td>${product.productname}</td>
-                                        <td>${product.productprice}</td>
-                                        <td>${product.productimage}</td>
+                                        <td>${product.productPK}</td>
+                                         <td>${product.productName}</td>
+                                        <td>${product.productPrice}</td>
                                         <td>${product.discount}</td>
-                                        <td>${product.productstock}</td>
-                                        <td>${product.productdiscription}</td>
-                                        <td>${product.createdDate}</td>
-                                        <td>${product.tblUserTable.first_name}</td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/editproduct/${product.productid}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
-                                        <td><a href="${pageContext.servletContext.contextPath}/deleteproduct/${product.productid}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
+                                        <td>${product.productStock}</td>
+                                        <td>${product.productDiscription    }</td>
+                                        <td>${product.createdOn}</td>
+                                        <td>${product.createdBy.first_name}</td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/editsellerproduct/${product.productPK}" style="font-size: 22px;"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="${pageContext.servletContext.contextPath}/deletesellerproduct/${product.productPK}" style="font-size: 22px;"><i class="fa fa-trash"></i></a></td>
                                     </tr>
                                     <c:set var="count" value="${count+1}"/>
                                 </c:forEach>

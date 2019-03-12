@@ -5,10 +5,14 @@
  */
 package com.damani.controller;
 
+import com.damani.model.TblAdminBrand;
 import com.damani.model.TblBrand;
 import com.damani.model.TblSellerProduct;
 import com.damani.model.TblUserTable;
 import com.damani.service.AdminCategoryService;
+import com.damani.service.AdminProductService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class indexcontroller {
 
     @Autowired
-    AdminCategoryService categoryService;
+    AdminProductService adminProductService;
 
     @RequestMapping(value = "/")
     public String index() {
@@ -41,6 +45,13 @@ public class indexcontroller {
         return "com.damani.register";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return "redirect:/loginindex";
+    }
+
     @RequestMapping(value = "/adminaddsellerindex", method = RequestMethod.GET)
     public ModelAndView addseller() {
         ModelAndView mv = new ModelAndView();
@@ -51,12 +62,11 @@ public class indexcontroller {
 
     @RequestMapping(value = "/selleraddbrandindex", method = RequestMethod.GET)
     public ModelAndView selleraddbrand(Model model) {
-        Object lstCategory = categoryService.fetchAllCategory();
-        model.addAttribute("lstCategory", lstCategory);
+        Object lstProducts = adminProductService.fetchAllProduct();
+        model.addAttribute("lstProducts", lstProducts);
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("addBrand", new TblBrand());
-        mv.addObject("lstCategory", lstCategory);
+        mv.addObject("addsellerBrand",  new TblAdminBrand());
         mv.setViewName("com.damani.selleraddbrandtiles");
         return mv;
     }

@@ -16,7 +16,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,26 +27,35 @@ import javax.persistence.Table;
 public class TblProduct implements Serializable {
 
     @Id
+    @Column(name = "productPK")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productPK", nullable = false)
     BigInteger productPK;
-
+    
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "categoryFK")
+    @JoinColumn(name="categoryFK")
     TblCategory categoryFK;
-
+    
     @Column(name = "productName")
     String productName;
-
-    @Column(name = "isActive")
-    Integer isActive;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "createdBy")
-    TblUserTable createdBy;
-
+    
+    @Column(name = "productPrice")
+    double productPrice;
+    
+    @Column(name = "discount")
+    String discount;
+    
+    @Column(name = "productStock")
+    int productStock;
+    
+    @Column(name = "productDiscription")
+    String productDiscription;
+    
     @Column(name = "createdOn")
-    Date createdOn;
+    Date createdOn ;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="createdBy")
+    TblUserTable createdBy;
 
     public BigInteger getProductPK() {
         return productPK;
@@ -73,12 +81,36 @@ public class TblProduct implements Serializable {
         this.productName = productName;
     }
 
-    public Integer getIsActive() {
-        return isActive;
+    public double getProductPrice() {
+        return productPrice;
     }
 
-    public void setIsActive(Integer isActive) {
-        this.isActive = isActive;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public int getProductStock() {
+        return productStock;
+    }
+
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
+    }
+
+    public String getProductDiscription() {
+        return productDiscription;
+    }
+
+    public void setProductDiscription(String productDiscription) {
+        this.productDiscription = productDiscription;
     }
 
     public Date getCreatedOn() {
@@ -96,5 +128,10 @@ public class TblProduct implements Serializable {
     public void setCreatedBy(TblUserTable createdBy) {
         this.createdBy = createdBy;
     }
+
+   
+
+   
+        
 
 }

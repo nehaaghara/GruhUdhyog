@@ -22,6 +22,8 @@ public interface AdminProductService {
     
     public List<TblProduct> fetchAllProduct();
     
+    public List<TblProduct> fetchAllProductByUserId(BigInteger createdBy);
+    
     public TblProduct fetchProductById(BigInteger productPK);
     
     public String deleteProductById(BigInteger productPK);

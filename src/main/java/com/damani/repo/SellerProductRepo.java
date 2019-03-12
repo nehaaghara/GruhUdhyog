@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.ripo;
+package com.damani.repo;
 
 import com.damani.model.TblBrand;
 import com.damani.model.TblSellerProduct;

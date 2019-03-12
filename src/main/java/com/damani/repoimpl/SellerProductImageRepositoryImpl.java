@@ -29,7 +29,11 @@ public class SellerProductImageRepositoryImpl implements SellerProductImageRepos
 
     @Override
     public void addSellerProductImage(List<TblSellerProductImageMapping> tblSellerProductImage) {
+        try{
         commonDAO.saveOrUpdateAll(tblSellerProductImage);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
 }

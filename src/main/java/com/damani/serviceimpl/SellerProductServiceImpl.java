@@ -7,7 +7,7 @@ package com.damani.serviceimpl;
 
 import com.damani.model.TblBrand;
 import com.damani.model.TblSellerProduct;
-import com.damani.ripo.SellerProductRepo;
+import com.damani.repo.SellerProductRepo;
 import com.damani.service.SellerProductService;
 import java.math.BigInteger;
 import java.util.List;

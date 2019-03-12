@@ -14,7 +14,19 @@
 <!DOCTYPE html>
 
 <div class="content-wrapper">
-
+    <section class="content-header">
+        <h1>
+            Brand
+            <small>
+                <c:if test="${not empty tblAdminBrand.brandPk}">
+                    Update
+                </c:if>
+                <c:if test="${empty tblAdminBrand.brandPk}">
+                    Add 
+                </c:if>
+            </small>
+        </h1>
+    </section>
     <section class="content">
         <div class="row">
             <!-- left column -->
@@ -24,8 +36,8 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Add Brand</h3>
                     </div>
-                    <form:form action="${pageContext.servletContext.contextPath}/selleraddbrand" modelAttribute="addsellerBrand" method="post">
-                       <form:hidden path="brandPk" name="brandPk" />
+                    <form:form action="${pageContext.servletContext.contextPath}/saveadminbrand" modelAttribute="tblAdminBrand" method="post">
+                        <form:hidden path="brandPk" name="brandPk" />
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="productFk">Select Product</label>
@@ -46,7 +58,7 @@
                         <div class="box-footer">
                             <input type="submit" name="save" value="Save & Exit" class="btn btn-primary"/>
                             <input type="submit" name="saveAndNew" value="Save & New" class="btn btn-primary"/>
-                            <input type="button" name="action" value="Cancel" class="btn btn-primary" onclick="window.location.href = '${pageContext.servletContext.contextPath}/showallbrand'"/>
+                            <input type="button" name="action" value="Cancel" class="btn btn-primary" onclick="window.location.href = '${pageContext.servletContext.contextPath}/viewadminbrand'"/>
                         </div>
                     </form:form>
                 </div>
