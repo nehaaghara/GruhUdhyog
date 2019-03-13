@@ -8,18 +8,18 @@ package com.damani.repoimpl;
 import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
 import com.damani.model.TblProduct;
-import com.damani.repo.AdminProductRepository;
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.damani.repo.ProductRepository;
 
 /**
  *
  * @author ITMCS
  */
 @Repository
-public class AdminProductRepositoryImpl implements AdminProductRepository{
+public class ProductRepositoryImpl implements ProductRepository{
 
     @Autowired
     CommonDAO commonDAO;
@@ -39,7 +39,6 @@ public class AdminProductRepositoryImpl implements AdminProductRepository{
     public TblProduct fetchProductById(BigInteger productPK) {
       List<TblProduct> lstTblProduct = commonDAO.findEntity(TblProduct.class,"productPK",OperationTypeEnum.EQ,productPK);
       if(!lstTblProduct.isEmpty()){
-          System.out.println("in repo if");
           return lstTblProduct.get(0);
       }
       return null;

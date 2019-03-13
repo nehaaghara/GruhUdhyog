@@ -7,29 +7,27 @@ package com.damani.serviceimpl;
 
 import com.damani.model.TblProduct;
 import com.damani.model.TblUserTable;
-import com.damani.repo.AdminProductRepository;
-import com.damani.service.AdminProductService;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.damani.repo.ProductRepository;
+import com.damani.service.ProductService;
 
 /**
  *
  * @author ITMCS
  */
 @Service
-public class AdminProductServiceImpl implements AdminProductService {
+public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    AdminProductRepository adminProductRepository;
+    ProductRepository adminProductRepository;
 
     @Override
     public String saveProduct(TblProduct tblProduct, TblUserTable tblUserTable) {
-        System.out.println("in service");
         tblProduct.setCategoryFK(tblProduct.getCategoryFK());
-        System.out.println("category::"+tblProduct.getCategoryFK().getCategoryPK());
         tblProduct.setProductName(tblProduct.getProductName());
         tblProduct.setProductPrice(tblProduct.getProductPrice());
         tblProduct.setDiscount(tblProduct.getDiscount());
@@ -48,7 +46,6 @@ public class AdminProductServiceImpl implements AdminProductService {
 
     @Override
     public TblProduct fetchProductById(BigInteger productPK) {
-        System.out.println("IN SERVICE");
         return adminProductRepository.fetchProductById(productPK);
     }
 
@@ -80,7 +77,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 
     @Override
     public List<TblProduct> fetchAllProductByUserId(BigInteger createdBy) {
-       return adminProductRepository.fetchAllProductById(createdBy);
+        return adminProductRepository.fetchAllProductById(createdBy);
     }
 
 }

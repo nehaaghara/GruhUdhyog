@@ -7,37 +7,37 @@ package com.damani.repoimpl;
 
 import com.damani.dal.CommonDAO;
 import com.damani.dal.OperationTypeEnum;
-import com.damani.model.TblAdminBrand;
-import com.damani.repo.AdminBrandRepository;
+import com.damani.model.TblBrand;
 import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import com.damani.repo.BrandRepository;
 
 /**
  *
  * @author ITMCS
  */
 @Repository
-public class AdminBrandRepositoryImpl implements AdminBrandRepository {
+public class BrandRepositoryImpl implements BrandRepository {
 
     @Autowired
     CommonDAO commonDAO;
 
     @Override
-    public TblAdminBrand saveAdminBrand(TblAdminBrand tblAdminBrand) {
+    public TblBrand saveAdminBrand(TblBrand tblAdminBrand) {
         commonDAO.saveOrUpdate(tblAdminBrand);
         return tblAdminBrand;
     }
 
     @Override
-    public List<TblAdminBrand> fetchAllAdminBrand() {
-        return commonDAO.findEntity(TblAdminBrand.class);
+    public List<TblBrand> fetchAllAdminBrand() {
+        return commonDAO.findEntity(TblBrand.class);
     }
 
     @Override
-    public TblAdminBrand fetchAdminBrandById(BigInteger brandPk) {
-        List<TblAdminBrand> lstTblBrand = commonDAO.findEntity(TblAdminBrand.class, "brandPk", OperationTypeEnum.EQ, brandPk);
+    public TblBrand fetchAdminBrandById(BigInteger brandPk) {
+        List<TblBrand> lstTblBrand = commonDAO.findEntity(TblBrand.class, "brandPk", OperationTypeEnum.EQ, brandPk);
         if (!lstTblBrand.isEmpty()) {
             return lstTblBrand.get(0);
         }
@@ -45,7 +45,7 @@ public class AdminBrandRepositoryImpl implements AdminBrandRepository {
     }
 
     @Override
-    public String deleteBrandById(TblAdminBrand tblAdminBrand) {
+    public String deleteBrandById(TblBrand tblAdminBrand) {
         if(null !=tblAdminBrand.getBrandPk()){
         commonDAO.delete(tblAdminBrand);
         return "Deleted SuccessFully";
@@ -54,14 +54,14 @@ public class AdminBrandRepositoryImpl implements AdminBrandRepository {
     }
 
     @Override
-    public String updateBrandById(TblAdminBrand tblAdminBrand) {
+    public String updateBrandById(TblBrand tblAdminBrand) {
         commonDAO.update(tblAdminBrand);
         return "Updated Successfully";
     }
 
     @Override
-    public List<TblAdminBrand> fetchAllBrandById(BigInteger userId) {
-        return commonDAO.findEntity(TblAdminBrand.class,"createdBy.userid",OperationTypeEnum.EQ,userId);
+    public List<TblBrand> fetchAllBrandById(BigInteger userId) {
+        return commonDAO.findEntity(TblBrand.class,"createdBy.userid",OperationTypeEnum.EQ,userId);
     }
 
 }

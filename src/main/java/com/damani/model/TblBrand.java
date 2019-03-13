@@ -16,42 +16,49 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  *
- * @author ITMCS-PC
+ * @author ITMCS
  */
 @Entity
 @Table(name = "tbl_brand")
 public class TblBrand implements Serializable{
-    
+
     @Id
-    @Column(name = "brandid")
+    @Column(name = "brandPk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    BigInteger brandid;
-    
+    BigInteger brandPk;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="categoryFk")
-    TblCategory categoryFk;
-    
-    @Column(name = "brandname")
+    @JoinColumn(name = "productFk")
+    TblProduct productFk;
+
+    @Column(name = "brandName")
     String brandName;
 
-    @Column(name = "createdDate")
-    Date createdDate ;
-    
+    @Column(name = "createdOn")
+    Date createdOn;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="createdBy")
-    TblUserTable tblUserTable;
-    
-     public BigInteger getBrandid() {
-        return brandid;
+    @JoinColumn(name = "createdBy")
+    TblUserTable createdBy;
+
+    public BigInteger getBrandPk() {
+        return brandPk;
     }
 
-    public void setBrandid(BigInteger brandid) {
-        this.brandid = brandid;
+    public void setBrandPk(BigInteger brandPk) {
+        this.brandPk = brandPk;
+    }
+
+    public TblProduct getProductFk() {
+        return productFk;
+    }
+
+    public void setProductFk(TblProduct productFk) {
+        this.productFk = productFk;
     }
 
     public String getBrandName() {
@@ -62,28 +69,20 @@ public class TblBrand implements Serializable{
         this.brandName = brandName;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public Date getCreatedOn() {
+        return createdOn;
     }
 
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
     }
 
-    public TblUserTable getTblUserTable() {
-        return tblUserTable;
+    public TblUserTable getCreatedBy() {
+        return createdBy;
     }
 
-    public void setTblUserTable(TblUserTable tblUserTable) {
-        this.tblUserTable = tblUserTable;
-    }
-
-    public TblCategory getCategoryFk() {
-        return categoryFk;
-    }
-
-    public void setCategoryFk(TblCategory categoryFk) {
-        this.categoryFk = categoryFk;
+    public void setCreatedBy(TblUserTable createdBy) {
+        this.createdBy = createdBy;
     }
     
     

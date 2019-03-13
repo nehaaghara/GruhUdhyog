@@ -5,12 +5,8 @@
  */
 package com.damani.controller;
 
-import com.damani.model.TblAdminBrand;
 import com.damani.model.TblBrand;
-import com.damani.model.TblSellerProduct;
 import com.damani.model.TblUserTable;
-import com.damani.service.AdminCategoryService;
-import com.damani.service.AdminProductService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import com.damani.service.ProductService;
 
 /**
  *
@@ -28,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class indexcontroller {
 
     @Autowired
-    AdminProductService adminProductService;
+    ProductService adminProductService;
 
     @RequestMapping(value = "/")
     public String index() {
@@ -66,7 +63,7 @@ public class indexcontroller {
         model.addAttribute("lstProducts", lstProducts);
 
         ModelAndView mv = new ModelAndView();
-        mv.addObject("addsellerBrand",  new TblAdminBrand());
+        mv.addObject("addsellerBrand",  new TblBrand());
         mv.setViewName("com.damani.selleraddbrandtiles");
         return mv;
     }

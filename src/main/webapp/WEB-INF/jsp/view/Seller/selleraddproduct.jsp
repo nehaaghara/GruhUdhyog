@@ -16,7 +16,12 @@
         <h1>
             Product
             <small>
-
+                <c:if test="${not empty adminProductBean.tblproduct.productPK}">
+                    Update
+                </c:if>
+                <c:if test="${empty adminProductBean.tblproduct.productPK}">
+                    Add
+                </c:if>
             </small>
         </h1>
     </section>
@@ -28,14 +33,14 @@
                         <h3 class="box-title">Product Details</h3>
                     </div>
                     <form:form role="form" id="form" action="${pageContext.servletContext.contextPath}/selleraddproduct" enctype="multipart/form-data"  method="post"  modelAttribute="addProduct">
-                        <form:hidden path="tblProduct.productPK" name="tblProduct.productPK" id="tblProduct.productPK"/>
+                        <form:hidden path="tblproduct.productPK" name="tblproduct.productPK" id="tblproduct.productPK"/>
                         <div class="box-body">
                             <div id="divAltMsg"></div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="categoryFK">Select Category</label>
-                                        <form:select path="tblProduct.categoryFK.categoryPK" title="Category" name="tblProduct.categoryFK.categoryPK" id="categoryFK" class="form-control select2" style="width: 100%;">
+                                        <form:select path="tblproduct.categoryFK.categoryPK" title="Category" name="tblproduct.categoryFK.categoryPK" id="categoryFK" class="form-control select2" style="width: 100%;">
                                             <option value="-1" disabled="true" selected="true">Please Select</option>
                                             <c:forEach items='${lstCategory}' var='entry'>
                                                 <option value="${entry.categoryPK}">${entry.categoryName}</option> 
@@ -44,27 +49,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Name</label>
-                                        <form:input path="tblProduct.productName" type="text" name="tblProduct.productName" class="form-control"  />
+                                        <form:input path="tblproduct.productName" type="text" name="tblproduct.productName" class="form-control"  />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Price </label>
-                                        <form:input path="tblProduct.productPrice" type="text" name="tblProduct.productPrice" class="form-control"  />
+                                        <form:input path="tblproduct.productPrice" type="text" name="tblproduct.productPrice" class="form-control"  />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Image</label>
-                                        <input type="file" path="lstAdminProductImage" name="lstAdminProductImage" multiple="multiple" class="form-control"  />
+                                        <input type="file" path="lstadminproductimage" name="lstadminproductimage" multiple="multiple" class="form-control"  />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Discount </label>
-                                        <form:input path="tblProduct.discount" type="text" name="tblProduct.discount" class="form-control"  />
+                                        <form:input path="tblproduct.discount" type="text" name="tblproduct.discount" class="form-control"  />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Stock</label>
-                                        <form:input path="tblProduct.productStock" type="text" name="tblProduct.productStock" class="form-control"  />
+                                        <form:input path="tblproduct.productStock" type="text" name="tblproduct.productStock" class="form-control"  />
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Product Discription </label>
-                                        <form:textarea path="tblProduct.productDiscription" type="text" name="tblProduct.productDiscription" class="form-control" col="20" row="7"></form:textarea>
+                                        <form:textarea path="tblproduct.productDiscription" type="text" name="tblproduct.productDiscription" class="form-control" col="20" row="7"></form:textarea>
                                         </div>
 
                                     </div>

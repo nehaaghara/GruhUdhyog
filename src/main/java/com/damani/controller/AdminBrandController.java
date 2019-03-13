@@ -5,11 +5,8 @@
  */
 package com.damani.controller;
 
-import com.damani.model.TblAdminBrand;
+import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
-import com.damani.service.AdminBrandService;
-import com.damani.service.AdminCategoryService;
-import com.damani.service.AdminProductService;
 import java.math.BigInteger;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +18,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.damani.service.BrandService;
+import com.damani.service.CategoryService;
+import com.damani.service.ProductService;
 
 /**
  *
@@ -30,14 +30,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AdminBrandController {
 
     @Autowired
-    AdminBrandService adminBrandService;
+    BrandService adminBrandService;
 
     @Autowired
-    AdminProductService adminProductService;
+    ProductService adminProductService;
     
     @RequestMapping(value = "/addadminbrand", method = RequestMethod.GET)
     public String addAdminBrand(HttpServletRequest request,Model model) {
-        model.addAttribute("tblAdminBrand", new TblAdminBrand());
+        model.addAttribute("tblAdminBrand", new TblBrand());
 
         Object lstProducts = adminProductService.fetchAllProduct();
         model.addAttribute("lstProducts", lstProducts);
@@ -53,7 +53,7 @@ public class AdminBrandController {
     }
 
     @RequestMapping(value = "/saveadminbrand", method = RequestMethod.POST)
-    public String saveAdminBrand(HttpServletRequest request, @ModelAttribute("tblAdminBrand") TblAdminBrand addtblAdminBrand, RedirectAttributes redirectAttributes) {
+    public String saveAdminBrand(HttpServletRequest request, @ModelAttribute("tblAdminBrand") TblBrand addtblAdminBrand, RedirectAttributes redirectAttributes) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
@@ -77,11 +77,11 @@ public class AdminBrandController {
 
     @RequestMapping(value = "/editadminbrand/{brandPk}", method = RequestMethod.GET)
     public String editAdminBrand(@PathVariable("brandPk") BigInteger brandPk, Model model) {
-        Object response = adminBrandService.fetchAdminBrandById(brandPk);
-        model.addAttribute("tblAdminBrand", response);
-        
         Object lstProducts = adminProductService.fetchAllProduct();
         model.addAttribute("lstProducts", lstProducts);
+        
+        Object response = adminBrandService.fetchAdminBrandById(brandPk);
+        model.addAttribute("tblAdminBrand", response);
         
         return "com.damani.addadminBrand";
     }
@@ -94,7 +94,7 @@ public class AdminBrandController {
     }
 
     @RequestMapping(value = "/updateadminbrand/{brandPk}", method = RequestMethod.POST)
-    public String updateAdminBrand(@PathVariable("brandPk") BigInteger brandPk, @ModelAttribute TblAdminBrand tblAdminBrand, HttpServletRequest request) {
+    public String updateAdminBrand(@PathVariable("brandPk") BigInteger brandPk, @ModelAttribute TblBrand tblAdminBrand, HttpServletRequest request) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());

@@ -11,19 +11,19 @@ import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.damani.repo.AdminCategoryRepository;
-import com.damani.service.AdminCategoryService;
 import java.util.Date;
+import com.damani.repo.CategoryRepository;
+import com.damani.service.CategoryService;
 
 /**
  *
  * @author ITMCS
  */
 @Service
-public class AdminCategoryServiceImpl implements AdminCategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
-    AdminCategoryRepository categoryRepository;
+    CategoryRepository categoryRepository;
 
     @Override
     public String saveCategory(TblCategory tblCategory, TblUserTable tblUserTable) {
