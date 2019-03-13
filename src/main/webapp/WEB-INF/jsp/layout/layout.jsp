@@ -1,3 +1,13 @@
+<%@page import="com.damani.model.TblProduct"%>
+<%@page import="java.util.List"%>
+<%@page import="com.damani.model.TblCategory"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.damani.controller.HeaderController"%>
+<%@page import="com.damani.controller.HeaderController"%>
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+<%@page import="org.springframework.beans.factory.annotation.Autowired"%>
+
+
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
  <%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
@@ -48,7 +58,15 @@
 <link rel="apple-touch-icon" href="${pageContext.servletContext.contextPath}/webresource/images/apple-touch-icon.html">
 <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.servletContext.contextPath}/webresource/images/apple-touch-icon-72x72.html">
 <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.servletContext.contextPath}/webresource/images/apple-touch-icon-114x114.html">
+ <style>
+            
+            ::-webkit-scrollbar {width: 5px;}
+            ::-webkit-scrollbar-thumb {background: #888;border-radius: 20px;}
+            div.questionAnswerScroll{padding: 5px;width: auto;height: 300px;overflow: scroll;background-color: white;border-radius: 12px;}
+ </style>
 </head>  
+
+
 
 <!-- START HEADER -->
    <tiles:insertAttribute name="header" />

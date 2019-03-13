@@ -1,30 +1,12 @@
 <%-- 
-    Document   : checkOut
-    Created on : Mar 5, 2019, 5:27:03 PM
-    Author     : ITMCS
+    Document   : checkout
+    Created on : Mar 12, 2019, 11:01:46 AM
+    Author     : ITMCS-PC
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-
-  <!-- Bread Crumb STRAT -->
-  <div class="banner inner-banner1 ">
-    <div class="container">
-      <section class="banner-detail center-xs">
-        <h1 class="banner-title">Checkout</h1>
-        <div class="bread-crumb right-side float-none-xs">
-          <ul>
-            <li><a href="index-2.html">Home</a>/</li>
-            <li><a href="cart.html">Cart</a>/</li>
-            <li><span>Checkout</span></li>
-          </ul>
-        </div>
-      </section>
-    </div>
-  </div>
-  <!-- Bread Crumb END -->
-  
-  <!-- CONTAIN START -->
+<!DOCTYPE html>
+ <!-- CONTAIN START -->
   <section class="checkout-section ptb-95">
     <div class="container">
       <div class="row">
@@ -780,7 +762,7 @@
                           </span>
                         </div>
                       </div>
-                      <div class="col-sm-12"> <a href="order-overview.html" class="btn btn-color right-side">Next</a> </div>
+                      <div class="col-sm-12"> <a href="${pageContext.servletContext.contextPath}/orderoverviewpage" class="btn btn-color right-side">Next</a> </div>
                     </div>
                   </div>
                 </form>
@@ -792,4 +774,3 @@
     </div>
   </section>
   <!-- CONTAINER END --> 
- 

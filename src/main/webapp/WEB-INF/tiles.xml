@@ -10,7 +10,42 @@
         <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
     </definition>
+    <!-- User Menu-->
     
+     <!-- checkout tiles  -->
+    <definition name="com.damani.checkouttiles" extends="com.damani.userlayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/User/checkout.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!-- checkout tiles  -->
+    
+      <!-- orderoverview tiles  -->
+    <definition name="com.damani.orderoverviewtiles" extends="com.damani.userlayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/User/orderoverview.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!-- orderoverview tiles  -->
+    
+      <!-- payment tiles  -->
+    <definition name="com.damani.paymenttiles" extends="com.damani.userlayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/User/payment.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!-- payment tiles  -->
+    
+      <!-- ordercomplete tiles  -->
+    <definition name="com.damani.ordercompletetiles" extends="com.damani.userlayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/User/ordercomplete.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!-- ordercomplete tiles  -->
+    
+      <!-- cart tiles  -->
+    <definition name="com.damani.carttiles" extends="com.damani.userlayout">
+        <put-attribute name="body" value="/WEB-INF/jsp/view/User/cart.jsp"></put-attribute>
+        <put-attribute name="title" value="gruhudhyog"></put-attribute>
+    </definition>
+    <!-- cart tiles  -->
     <definition name="com.damani.userindex" extends="com.damani.userlayout">
         <put-attribute name="body" value="/WEB-INF/jsp/view/userindex.jsp"></put-attribute>
         <put-attribute name="title" value="gruhudhyog"></put-attribute>

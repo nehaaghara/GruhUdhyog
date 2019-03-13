@@ -46,5 +46,7 @@
             <property name="order" value="2"></property>
     </bean>
     
-    
+    <mvc:interceptors>
+        <bean class="com.damani.interceptor.CustomInterceptor" />
+    </mvc:interceptors>
 </beans>
