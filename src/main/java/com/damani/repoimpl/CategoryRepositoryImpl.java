@@ -12,14 +12,14 @@ import java.math.BigInteger;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.damani.repo.AdminCategoryRepository;
+import com.damani.repo.CategoryRepository;
 
 /**
  *
  * @author ITMCS
  */
 @Repository
-public class AdminCategoryRepositoryImpl implements AdminCategoryRepository {
+public class CategoryRepositoryImpl implements CategoryRepository {
 
     @Autowired
     CommonDAO commonDAO;

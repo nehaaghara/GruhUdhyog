@@ -44,12 +44,17 @@
                                 <form:select path="productFk.productPK" title="Product" name="productFk.productPK" id="productFk" class="form-control select2" style="width: 100%;">
                                     <option value="-1" disabled="true" selected="true">Please Select</option>
                                     <c:forEach items='${lstProducts}' var='entry'>
-                                        <option value="${entry.productPK}">${entry.productName}</option> 
+                                        <c:if test="${tblAdminBrand.productFk.productPK eq entry.productPK}">
+                                            <option value="${entry.productPK}" selected="true">${entry.productName}</option> 
+                                        </c:if>
+                                        <c:if test="${tblAdminBrand.productFk.productPK ne entry.productPK}">
+                                            <option value="${entry.productPK}">${entry.productName}</option> 
+                                        </c:if>
                                     </c:forEach>  
                                 </form:select>
                             </div>
                             <div class="form-group">
-                                    <label for="exampleInputAdminBrand">Brand Name</label>
+                                <label for="exampleInputAdminBrand">Brand Name</label>
                                 <form:input path="brandName" name="brandName" class="form-control" id="brandName" title="Brand Name"  placeholder="Enter Brand" autofocus="on"/>
                                 <span for="brandName" class="help-block"><form:errors path="brandName"/></span>
                             </div>

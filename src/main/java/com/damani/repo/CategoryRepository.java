@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.service;
+package com.damani.repo;
 
 import com.damani.model.TblCategory;
-import com.damani.model.TblUserTable;
 import java.math.BigInteger;
 import java.util.List;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author ITMCS
  */
-@Service
-public interface AdminCategoryService {
+@Repository
+public interface CategoryRepository {
     
-    public String saveCategory(TblCategory tblCategory,TblUserTable tblUserTable);
+    public TblCategory saveCategory(TblCategory tblCategory);
     
     public List<TblCategory> fetchAllCategory();
     
     public TblCategory fetchCategoryById(BigInteger categoryPK);
     
-    public String deleteCategoryById(BigInteger categoryPK);
+    public String deleteCategory(TblCategory tblCategory);
     
-    public String updateCategoryById(TblCategory tblCategory,TblUserTable tblUserTable);
+    public String updateCategory(TblCategory tblCategory);
+    
 }

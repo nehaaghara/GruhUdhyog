@@ -5,7 +5,6 @@
  */
 package com.damani.model;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Column;
@@ -23,58 +22,58 @@ import javax.persistence.Table;
  * @author ITMCS
  */
 @Entity
-@Table(name = "tbl_brand")
-public class TblAdminBrand implements Serializable{
+@Table(name = "tbl_productimagemapping")
+public class TblProductImageMapping {
 
     @Id
-    @Column(name = "brandPk")
+    @Column(name = "adminProductImagePk")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    BigInteger brandPk;
+    BigInteger sellerProductImagePk;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "productFk")
-    TblProduct productFk;
+    @JoinColumn(name = "adminProductFk")
+    TblProduct adminProductFk;
 
-    @Column(name = "brandName")
-    String brandName;
+    @Column(name = "imagePath")
+    String imagePath;
 
-    @Column(name = "createdOn")
-    Date createdOn;
+    @Column(name = "createdDate")
+    Date createdDate;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "createdBy")
     TblUserTable createdBy;
 
-    public BigInteger getBrandPk() {
-        return brandPk;
+    public BigInteger getSellerProductImagePk() {
+        return sellerProductImagePk;
     }
 
-    public void setBrandPk(BigInteger brandPk) {
-        this.brandPk = brandPk;
+    public void setSellerProductImagePk(BigInteger sellerProductImagePk) {
+        this.sellerProductImagePk = sellerProductImagePk;
     }
 
-    public TblProduct getProductFk() {
-        return productFk;
+    public TblProduct getAdminProductFk() {
+        return adminProductFk;
     }
 
-    public void setProductFk(TblProduct productFk) {
-        this.productFk = productFk;
+    public void setAdminProductFk(TblProduct adminProductFk) {
+        this.adminProductFk = adminProductFk;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
-    public Date getCreatedOn() {
-        return createdOn;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public TblUserTable getCreatedBy() {
@@ -84,6 +83,7 @@ public class TblAdminBrand implements Serializable{
     public void setCreatedBy(TblUserTable createdBy) {
         this.createdBy = createdBy;
     }
-    
-    
+
+  
+
 }

@@ -5,7 +5,8 @@
  */
 package com.damani.service;
 
-import com.damani.model.TblAdminProductImageMapping;
+import com.damani.model.TblProductImageMapping;
+import java.math.BigInteger;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @author ITMCS
  */
 @Service
-public interface AdminProductImageService {
-    public void saveAdminProductImages(List<TblAdminProductImageMapping> lstTblAdminProductImageMapping);
+public interface ProductImageService {
+    public void saveAdminProductImages(List<TblProductImageMapping> lstTblAdminProductImageMapping);
+    public List<TblProductImageMapping> fetchAllImagesByProductId(BigInteger productFK);
 }

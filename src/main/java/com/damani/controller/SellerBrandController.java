@@ -5,15 +5,9 @@
  */
 package com.damani.controller;
 
-import com.damani.model.TblAdminBrand;
 import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
-import com.damani.service.AdminBrandService;
-import com.damani.service.AdminCategoryService;
-import com.damani.service.AdminProductService;
-import com.damani.service.SellerBrandService;
 import java.math.BigInteger;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.damani.service.BrandService;
+import com.damani.service.ProductService;
 
 /**
  *
@@ -34,13 +29,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class SellerBrandController {
 
     @Autowired
-    AdminProductService adminProductService;
+    ProductService adminProductService;
 
     @Autowired
-    AdminBrandService adminBrandService;
+    BrandService adminBrandService;
 
     @RequestMapping(value = "/selleraddbrand", method = RequestMethod.POST)
-    public String addseller(@ModelAttribute("addsellerBrand") TblAdminBrand addtblsellerBrand, HttpServletRequest request, RedirectAttributes redirectAttributes) {
+    public String addseller(@ModelAttribute("addsellerBrand") TblBrand addtblsellerBrand, HttpServletRequest request, RedirectAttributes redirectAttributes) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
@@ -97,7 +92,7 @@ public class SellerBrandController {
     }
     
      @RequestMapping(value = "/updatesellerbrand/{brandPk}", method = RequestMethod.POST)
-    public String updateSellerBrand(@PathVariable("brandPk") BigInteger brandPk, @ModelAttribute TblAdminBrand addsellerBrand, HttpServletRequest request) {
+    public String updateSellerBrand(@PathVariable("brandPk") BigInteger brandPk, @ModelAttribute TblBrand addsellerBrand, HttpServletRequest request) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());

@@ -3,31 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.damani.service;
+package com.damani.repo;
 
 import com.damani.model.TblProduct;
 import com.damani.model.TblUserTable;
 import java.math.BigInteger;
 import java.util.List;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author ITMCS
  */
-@Service
-public interface AdminProductService {
+@Repository
+public interface ProductRepository {
     
-    public String saveProduct(TblProduct tblProduct,TblUserTable tblUserTable);
+    public TblProduct saveProduct(TblProduct tblProduct);
     
     public List<TblProduct> fetchAllProduct();
     
-    public List<TblProduct> fetchAllProductByUserId(BigInteger createdBy);
+    public List<TblProduct> fetchAllProductById(BigInteger createdBy);
     
     public TblProduct fetchProductById(BigInteger productPK);
     
-    public String deleteProductById(BigInteger productPK);
+    public void deleteProductById(TblProduct tblProduct);
     
-    public String updateProductById(TblProduct tblProduct,TblUserTable tblUserTable);
-    
+    public void updateProductById(TblProduct tblProduct);
 }

@@ -5,11 +5,9 @@
  */
 package com.damani.serviceimpl;
 
-import com.damani.model.TblAdminBrand;
+import com.damani.model.TblBrand;
 import com.damani.model.TblCategory;
 import com.damani.model.TblUserTable;
-import com.damani.repo.AdminBrandRepository;
-import com.damani.service.AdminBrandService;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
@@ -24,19 +22,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.damani.repo.BrandRepository;
+import com.damani.service.BrandService;
 
 /**
  *
  * @author ITMCS
  */
 @Service
-public class AdminBrandServiceImpl implements AdminBrandService {
+public class BrandServiceImpl implements BrandService {
 
     @Autowired
-    AdminBrandRepository adminBrandRepository;
+    BrandRepository adminBrandRepository;
 
     @Override
-    public String saveAdminBrand(TblAdminBrand tblAdminBrand, TblUserTable tblUserTable) {
+    public String saveAdminBrand(TblBrand tblAdminBrand, TblUserTable tblUserTable) {
         tblAdminBrand.setProductFk(tblAdminBrand.getProductFk());
         tblAdminBrand.setBrandName(tblAdminBrand.getBrandName());
         tblAdminBrand.setCreatedOn(new Date());
@@ -46,19 +46,19 @@ public class AdminBrandServiceImpl implements AdminBrandService {
     }
 
     @Override
-    public List<TblAdminBrand> fetchAllBrands() {
-        List<TblAdminBrand> lstBrand = adminBrandRepository.fetchAllAdminBrand();
+    public List<TblBrand> fetchAllBrands() {
+        List<TblBrand> lstBrand = adminBrandRepository.fetchAllAdminBrand();
         return lstBrand;
     }
 
     @Override
-    public TblAdminBrand fetchAdminBrandById(BigInteger brandPk) {
+    public TblBrand fetchAdminBrandById(BigInteger brandPk) {
         return adminBrandRepository.fetchAdminBrandById(brandPk);
     }
 
     @Override
     public String deleteBrandById(BigInteger brandPk) {
-        TblAdminBrand tblAdminBrand = new TblAdminBrand();
+        TblBrand tblAdminBrand = new TblBrand();
         tblAdminBrand.setBrandPk(brandPk);
         if (null != tblAdminBrand.getBrandPk()) {
             adminBrandRepository.deleteBrandById(tblAdminBrand);
@@ -68,8 +68,8 @@ public class AdminBrandServiceImpl implements AdminBrandService {
     }
 
     @Override
-    public String updateBrandById(TblAdminBrand tblAdminBrand, TblUserTable tblUserTable) {
-        TblAdminBrand newtblAdminBrand = adminBrandRepository.fetchAdminBrandById(tblAdminBrand.getBrandPk());
+    public String updateBrandById(TblBrand tblAdminBrand, TblUserTable tblUserTable) {
+        TblBrand newtblAdminBrand = adminBrandRepository.fetchAdminBrandById(tblAdminBrand.getBrandPk());
         newtblAdminBrand.setProductFk(tblAdminBrand.getProductFk());
         newtblAdminBrand.setBrandName(tblAdminBrand.getBrandName());
         newtblAdminBrand.setCreatedOn(new Date());
@@ -79,7 +79,7 @@ public class AdminBrandServiceImpl implements AdminBrandService {
     }
 
     @Override
-    public List<TblAdminBrand> fetchBrandsByID(BigInteger userId) {
+    public List<TblBrand> fetchBrandsByID(BigInteger userId) {
         return adminBrandRepository.fetchAllBrandById(userId);
     }
 

@@ -5,7 +5,7 @@
  */
 package com.damani.service;
 
-import com.damani.model.TblAdminBrand;
+import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
 import java.math.BigInteger;
 import java.util.List;
@@ -16,12 +16,12 @@ import org.springframework.stereotype.Service;
  * @author ITMCS
  */
 @Service
-public interface AdminBrandService {
+public interface BrandService {
     
-    public String saveAdminBrand(TblAdminBrand tblAdminBrand,TblUserTable tblUserTable);
-    public List<TblAdminBrand> fetchAllBrands();
-    public List<TblAdminBrand> fetchBrandsByID(BigInteger userId);
-    public TblAdminBrand fetchAdminBrandById(BigInteger brandPk);
+    public String saveAdminBrand(TblBrand tblAdminBrand,TblUserTable tblUserTable);
+    public List<TblBrand> fetchAllBrands();
+    public List<TblBrand> fetchBrandsByID(BigInteger userId);
+    public TblBrand fetchAdminBrandById(BigInteger brandPk);
     public String deleteBrandById(BigInteger brandPk);
-    public String updateBrandById(TblAdminBrand tblAdminBrand,TblUserTable tblUserTable);
+    public String updateBrandById(TblBrand tblAdminBrand,TblUserTable tblUserTable);
 }

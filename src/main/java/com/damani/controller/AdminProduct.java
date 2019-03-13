@@ -5,11 +5,10 @@
  */
 package com.damani.controller;
 
-import com.damani.model.TblAdminProductImageMapping;
+import com.damani.model.TblProductImageMapping;
 import com.damani.model.TblCategory;
 import com.damani.model.TblProduct;
 import com.damani.model.TblUserTable;
-import com.damani.service.AdminBrandService;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.damani.service.AdminCategoryService;
-import com.damani.service.AdminProductImageService;
-import com.damani.service.AdminProductService;
 import com.damani.utility.CommonUtility;
-import com.damani.webbean.AdminProductBean;
+import com.damani.webbean.ProductBean;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,6 +31,9 @@ import java.util.UUID;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.damani.service.CategoryService;
+import com.damani.service.ProductImageService;
+import com.damani.service.ProductService;
 
 /**
  *
@@ -44,17 +43,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class AdminProduct {
 
     @Autowired
-    AdminCategoryService categoryService;
+    CategoryService categoryService;
 
     @Autowired
-    AdminProductService adminProductService;
+    ProductService adminProductService;
 
     @Autowired
-    AdminProductImageService adminProductImageService;
+    ProductImageService adminProductImageService;
 
     @RequestMapping(value = "/addproduct", method = RequestMethod.GET)
     public String addProduct(HttpServletRequest request, Model model) {
-        model.addAttribute("adminProductBean", new AdminProductBean());
+        model.addAttribute("adminProductBean", new ProductBean());
 
         Object lstCategory = categoryService.fetchAllCategory();
         model.addAttribute("lstCategory", lstCategory);
@@ -69,29 +68,28 @@ public class AdminProduct {
     }
 
     @RequestMapping(value = "/saveproduct", method = RequestMethod.POST)
-    public String saveProduct(HttpServletRequest request, @ModelAttribute("adminProductBean") AdminProductBean addadminProductBean, RedirectAttributes redirectAttributes) throws FileNotFoundException, IOException {
+    public String saveProduct(HttpServletRequest request, @ModelAttribute("adminProductBean") ProductBean addadminProductBean, RedirectAttributes redirectAttributes) throws FileNotFoundException, IOException {
 
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
 
-        addadminProductBean.getTblProduct().setCreatedBy(tblUserTable);
-        addadminProductBean.getTblProduct().setCreatedOn(new Date());
+        addadminProductBean.getTblproduct().setCreatedBy(tblUserTable);
+        addadminProductBean.getTblproduct().setCreatedOn(new Date());
 
         String response = null;
-        if (addadminProductBean.getTblProduct().getProductPK() == null) {
-            response = adminProductService.saveProduct(addadminProductBean.getTblProduct(), tblUserTable);
+        if (addadminProductBean.getTblproduct().getProductPK() == null) {
+            response = adminProductService.saveProduct(addadminProductBean.getTblproduct(), tblUserTable);
             redirectAttributes.addFlashAttribute("SuccessMessage", response);
         } else {
-            response = adminProductService.updateProductById(addadminProductBean.getTblProduct(), tblUserTable);
+            response = adminProductService.updateProductById(addadminProductBean.getTblproduct(), tblUserTable);
             redirectAttributes.addFlashAttribute("UpdateMessage", response);
         }
-
-        TblCategory tblCategory = categoryService.fetchCategoryById(addadminProductBean.getTblProduct().getCategoryFK().getCategoryPK());
-        List<TblAdminProductImageMapping> lstImageMappings = new ArrayList<>();
-        for (MultipartFile file : addadminProductBean.getLstAdminProductImage()) {
+        TblCategory tblCategory = categoryService.fetchCategoryById(addadminProductBean.getTblproduct().getCategoryFK().getCategoryPK());
+         List<TblProductImageMapping> lstImageMappings = new ArrayList<>();
+        for (MultipartFile file : addadminProductBean.getLstadminproductimage()) {
             String fileName = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
-            String filePath = CommonUtility.getProperty("imagePath") + File.separator + "ProductImages" + File.separator + tblCategory.getCategoryName() + File.separator + addadminProductBean.getTblProduct().getProductName() + File.separator;
+            String filePath = CommonUtility.getProperty("imagePath") + File.separator + "ProductImages" + File.separator + tblCategory.getCategoryName() + File.separator + addadminProductBean.getTblproduct().getProductName() + File.separator;
             File path = new File(filePath);
             if (!path.exists()) {
                 path.mkdirs();
@@ -101,9 +99,9 @@ public class AdminProduct {
             OutputStream os = new FileOutputStream(destFile);
             os.write(file.getBytes());
             os.close();
-            TblAdminProductImageMapping tblAdminProductImageMapping = new TblAdminProductImageMapping();
+            TblProductImageMapping tblAdminProductImageMapping = new TblProductImageMapping();
             tblAdminProductImageMapping.setImagePath(fullFileName);
-            tblAdminProductImageMapping.setAdminProductFk(addadminProductBean.getTblProduct());
+            tblAdminProductImageMapping.setAdminProductFk(addadminProductBean.getTblproduct());
             tblAdminProductImageMapping.setCreatedDate(new Date());
             tblAdminProductImageMapping.setCreatedBy(tblUserTable);
             lstImageMappings.add(tblAdminProductImageMapping);
@@ -119,8 +117,14 @@ public class AdminProduct {
 
     @RequestMapping(value = "/editproduct/{productPK}", method = RequestMethod.GET)
     public String editProduct(@PathVariable("productPK") BigInteger productPK, Model model) {
-        Object response = adminProductService.fetchProductById(productPK);
-        model.addAttribute("adminProductBean", response);
+        TblProduct response = adminProductService.fetchProductById(productPK);
+        ProductBean productBean = new ProductBean();
+        productBean.setTblproduct(response);
+        System.out.println("in controller");
+        List<TblProductImageMapping> lstImageMappings = adminProductImageService.fetchAllImagesByProductId(productPK);
+       // productBean.setLstadminproductimage(lstImageMappings);
+        System.out.println("images::"+lstImageMappings.get(1).getImagePath());
+        model.addAttribute("adminProductBean", productBean);
         Object lstCategory = categoryService.fetchAllCategory();
         model.addAttribute("lstCategory", lstCategory);
         return "com.damani.addProduct";
@@ -133,13 +137,13 @@ public class AdminProduct {
         return "redirect:/viewproduct";
     }
 
-    @RequestMapping(value = "/updateproduct/{productPK}", method = RequestMethod.GET)
-    public String updateProduct(@PathVariable("productPK") BigInteger productPK, @ModelAttribute AdminProductBean adminProductBean, HttpServletRequest request) {
+    @RequestMapping(value = "/updateproduct/{productPK}", method = RequestMethod.POST)
+    public String updateProduct(@PathVariable("productPK") BigInteger productPK, @ModelAttribute ProductBean adminProductBean, HttpServletRequest request) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
         tblUserTable.setUserid(lstuser.get(0).getUserid());
 
-        String response = adminProductService.updateProductById(adminProductBean.getTblProduct(), tblUserTable);
+        String response = adminProductService.updateProductById(adminProductBean.getTblproduct(), tblUserTable);
         return "redirect:/viewproduct";
     }
 

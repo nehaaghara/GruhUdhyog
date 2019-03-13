@@ -32,7 +32,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Category Details</h3>
                     </div>
-                    <form:form role="form" id="form" action="${pageContext.servletContext.contextPath}/save" method="post" onsubmit="return submitCategory();" modelAttribute="tblcategory" enctype="multipart/form-data">
+                    <form:form role="form" id="form" action="${pageContext.servletContext.contextPath}/savecategory" method="post" onsubmit="return submitCategory();" modelAttribute="tblcategory">
                         <form:hidden path="categoryPK" name="categoryPK" id="categoryPK"/>
                         <div class="box-body">
                             <div id="divAltMsg"></div>
@@ -51,7 +51,7 @@
                         <div class="box-footer">
                             <input type="submit" name="save" value="Save & Exit" class="btn btn-primary"/>
                             <input type="submit" name="saveAndNew" value="Save & New" class="btn btn-primary"/>
-                            <input type="button" name="action" value="Cancel" class="btn btn-primary" onclick="window.location.href = '${pageContext.servletContext.contextPath}/view'"/>
+                            <input type="button" name="action" value="Cancel" class="btn btn-primary" onclick="window.location.href = '${pageContext.servletContext.contextPath}/viewcategory'"/>
                         </div>
                     </div>
                 </form:form>

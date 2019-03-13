@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.damani.service.AdminCategoryService;
 import java.util.List;
+import com.damani.service.CategoryService;
 
 /**
  *
@@ -29,7 +29,7 @@ import java.util.List;
 public class AdminCategory {
 
     @Autowired
-    AdminCategoryService categoryService;
+    CategoryService categoryService;
 
     @RequestMapping(value = "/addcategory", method = RequestMethod.GET)
     public String addCategory(Model model, HttpServletRequest request) {
@@ -44,7 +44,7 @@ public class AdminCategory {
         return "com.damani.viewCategory";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "/savecategory", method = RequestMethod.POST)
     public String saveCategory(HttpServletRequest request, @ModelAttribute("tblcategory") TblCategory addCategory, RedirectAttributes redirectAttributes) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
@@ -80,7 +80,7 @@ public class AdminCategory {
         return "redirect:/viewcategory";
     }
 
-    @RequestMapping(value = "/update/{categoryPK}", method = RequestMethod.GET)
+    @RequestMapping(value = "/update/{categoryPK}", method = RequestMethod.POST)
     public String updateCategory(@PathVariable("categoryPK") BigInteger categoryPK, @ModelAttribute TblCategory tblCategory,HttpServletRequest request) {
         TblUserTable tblUserTable = new TblUserTable();
         List<TblUserTable> lstuser = (List<TblUserTable>) request.getSession(false).getAttribute("lstuser");
