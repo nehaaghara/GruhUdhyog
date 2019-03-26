@@ -6,7 +6,9 @@
 package com.damani.service;
 
 import com.damani.model.TblProduct;
+import com.damani.model.TblProductImageMapping;
 import java.util.List;
+import java.util.Map;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface LetestService {
 
-   // public List<TblProduct> letestService();
-    
+    public Map<TblProduct, List<TblProductImageMapping>> letestService();
+    public Map<TblProduct, List<TblProductImageMapping>> mostofferproductservice();
+
 }

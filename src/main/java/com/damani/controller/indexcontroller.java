@@ -7,6 +7,7 @@ package com.damani.controller;
 
 import com.damani.model.TblBrand;
 import com.damani.model.TblUserTable;
+import com.damani.service.ProductService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import com.damani.service.ProductService;
+
 
 /**
  *
@@ -28,8 +29,16 @@ public class indexcontroller {
     ProductService adminProductService;
 
     @RequestMapping(value = "/")
-    public String index() {
-        return "com.damani.userindex";
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("com.damani.userindex");
+        return mv;
+    }
+      @RequestMapping(value = "/userindex")
+    public ModelAndView userindex() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("com.damani.userindex");
+        return mv;
     }
 
     @RequestMapping(value = "/loginindex")

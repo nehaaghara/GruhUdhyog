@@ -45,6 +45,9 @@
                     value="org.springframework.web.servlet.view.tiles3.TilesView" />
             <property name="order" value="2"></property>
     </bean>
+    <mvc:resources mapping="/resources/**" location="file:///C:/home/gruhudhyog/" />
     
-    
+    <mvc:interceptors>
+        <bean class="com.damani.interceptor.CustomInterceptor" />
+    </mvc:interceptors>
 </beans>

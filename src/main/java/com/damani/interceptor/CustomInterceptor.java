@@ -7,6 +7,7 @@ package com.damani.interceptor;
 
 import com.damani.model.TblCategory;
 import com.damani.model.TblProduct;
+import com.damani.model.TblProductImageMapping;
 import com.damani.service.HeaderService;
 import com.damani.service.LetestService;
 import java.util.HashMap;
@@ -37,11 +38,13 @@ public class CustomInterceptor implements HandlerInterceptor{
     
     @Override
     public void postHandle(HttpServletRequest hsr, HttpServletResponse hsr1, Object o, ModelAndView mav) throws Exception {
-       
-//         Map<TblCategory,List<TblProduct>> mapofcategorywiseproduct=headerService.categoryservice();
-//         List<TblProduct> lstletestproduct= letestService.letestService();
-//         mav.addObject("mapofcategorywiseproduct",mapofcategorywiseproduct);
-//         mav.addObject("lstletestproduct", lstletestproduct);
+
+        Map<TblCategory,List<TblProduct>> mapofcategorywiseproduct=headerService.categoryservice();
+        Map<TblProduct, List<TblProductImageMapping>> mapofproductwithimage= letestService.letestService();
+        Map<TblProduct, List<TblProductImageMapping>> mostofferproductwithimage=letestService.mostofferproductservice();
+        hsr.setAttribute("mapofcategorywiseproduct", mapofcategorywiseproduct);
+        hsr.setAttribute("mapofproductwithimage", mapofproductwithimage);
+        hsr.setAttribute("mostofferproductwithimage", mostofferproductwithimage);
     }
     
     @Override
