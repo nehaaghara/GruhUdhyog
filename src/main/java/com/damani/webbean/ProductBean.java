@@ -6,6 +6,7 @@
 package com.damani.webbean;
 
 import com.damani.model.TblProduct;
+import com.damani.model.TblProductImageMapping;
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,7 +18,25 @@ public class ProductBean{
     
      TblProduct tblproduct;
      List<MultipartFile> lstadminproductimage;
+     List<TblProductImageMapping> tblProductImageMapping;
+     List<String> filePath;
 
+    public List<TblProductImageMapping> getTblProductImageMapping() {
+        return tblProductImageMapping;
+    }
+
+    public void setTblProductImageMapping(List<TblProductImageMapping> tblProductImageMapping) {
+        this.tblProductImageMapping = tblProductImageMapping;
+    }
+
+    public List<String> getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(List<String> filePath) {
+        this.filePath = filePath;
+    }
+   
     public TblProduct getTblproduct() {
         return tblproduct;
     }

@@ -34,6 +34,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.damani.service.CategoryService;
 import com.damani.service.ProductImageService;
 import com.damani.service.ProductService;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStream;
+import org.apache.commons.io.IOUtils;
+import org.apache.velocity.runtime.directive.Foreach;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  *
@@ -86,7 +93,7 @@ public class AdminProduct {
             redirectAttributes.addFlashAttribute("UpdateMessage", response);
         }
         TblCategory tblCategory = categoryService.fetchCategoryById(addadminProductBean.getTblproduct().getCategoryFK().getCategoryPK());
-         List<TblProductImageMapping> lstImageMappings = new ArrayList<>();
+        List<TblProductImageMapping> lstImageMappings = new ArrayList<>();
         for (MultipartFile file : addadminProductBean.getLstadminproductimage()) {
             String fileName = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
             String filePath = CommonUtility.getProperty("imagePath") + File.separator + "ProductImages" + File.separator + tblCategory.getCategoryName() + File.separator + addadminProductBean.getTblproduct().getProductName() + File.separator;
@@ -116,14 +123,22 @@ public class AdminProduct {
     }
 
     @RequestMapping(value = "/editproduct/{productPK}", method = RequestMethod.GET)
-    public String editProduct(@PathVariable("productPK") BigInteger productPK, Model model) {
+    public String editProduct(@PathVariable("productPK") BigInteger productPK, Model model) throws FileNotFoundException, IOException {
         TblProduct response = adminProductService.fetchProductById(productPK);
         ProductBean productBean = new ProductBean();
         productBean.setTblproduct(response);
         System.out.println("in controller");
         List<TblProductImageMapping> lstImageMappings = adminProductImageService.fetchAllImagesByProductId(productPK);
-       // productBean.setLstadminproductimage(lstImageMappings);
-        System.out.println("images::"+lstImageMappings.get(1).getImagePath());
+        System.out.println("size::" + lstImageMappings.size());
+//        for (TblProductImageMapping tblProductImageMapping : lstImageMappings) {
+//            System.out.println("in controller:::" + tblProductImageMapping.getImagePath());
+//            File file = new File(tblProductImageMapping.getImagePath().toString());
+//            FileInputStream input = new FileInputStream(file);
+//            MultipartFile multipartFile = new MockMultipartFile("file",file.getName(), "text/plain", IOUtils.toByteArray(input));
+//            productBean.setLstadminproductimage((List<MultipartFile>) multipartFile);
+//        }
+    
+        productBean.setTblProductImageMapping(lstImageMappings);
         model.addAttribute("adminProductBean", productBean);
         Object lstCategory = categoryService.fetchAllCategory();
         model.addAttribute("lstCategory", lstCategory);
