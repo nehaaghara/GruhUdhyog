@@ -2,14 +2,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
 <body class="homepage">
-    <%--    
-          out.print("vikas hingu");
-          HeaderController headerController=new HeaderController();
-          Map<TblCategory,List<TblProduct>> categorywiseproductmap=headerController.fetchallcategory();
-          out.print(headerController);
-          out.print(categorywiseproductmap);
-    --%>
+  
 
     <div class="se-pre-con"></div>
     <div id="newslater-popup" class="mfp-hide white-popup-block open align-center" style="display: none">
@@ -77,13 +73,18 @@
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li class="cart-icon"> <a href="#"> <span> <small class="cart-notification">2</small> </span> </a>
+                                        <li class="cart-icon" id="product"> <a href="#"> <span> <small class="cart-notification">2</small> </span> </a>
                                             <div class="cart-dropdown header-link-dropdown">
+                                                <div class="questionAnswerScroll">
                                                 <ul class="cart-list link-dropdown-list">
-                                                    <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                                        <div class="media"> <a class="pull-left"> <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/1.jpg"></a>
-                                                            <div class="media-body"> <span><a>Black African Print Skirt</a></span>
-                                                                <p class="cart-price">$14.99</p>
+                                                        
+                                                    <li> 
+                                                     <a class="close-cart"><i class="fa fa-times-circle"></i></a>
+                                                      <input type="hidden" name="productid" value="">
+                                                        <div class="media">
+                                                            <a class="pull-left"> <img alt="Eshoper" src=""></a>
+                                                            <div class="media-body">
+                                                                <p class="cart-price"></p>
                                                                 <div class="product-qty">
                                                                     <label>Qty:</label>
                                                                     <div class="custom-qty">
@@ -93,24 +94,15 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li> <a class="close-cart"><i class="fa fa-times-circle"></i></a>
-                                                        <div class="media"> <a class="pull-left"> <img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/2.jpg"></a>
-                                                            <div class="media-body"> <span><a>Black African Print Skirt</a></span>
-                                                                <p class="cart-price">$14.99</p>
-                                                                <div class="product-qty">
-                                                                    <label>Qty:</label>
-                                                                    <div class="custom-qty">
-                                                                        <input type="text" name="qty" maxlength="8" value="1" title="Qty" class="input-text qty">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                    
+                                                    
+                                                    
                                                 </ul>
+                                              </div>
                                                 <p class="cart-sub-totle"> 
                                                     <span class="pull-left">Cart Subtotal</span> 
                                                     <span class="pull-right">
-                                                        <strong class="price-box">$29.98</strong>
+                                                        <strong class="price-box1">$29.98</strong>
                                                     </span> 
                                                 </p>
                                                 <div class="clearfix"></div>

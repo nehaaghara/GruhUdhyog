@@ -6,9 +6,11 @@
 package com.damani.serviceimpl;
 
 import com.damani.model.TblProduct;
+import com.damani.model.TblProductImageMapping;
 import com.damani.repo.LetestRepo;
 import com.damani.service.LetestService;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,9 +25,15 @@ public class LetestServiceImpl implements LetestService{
     LetestRepo letestRepo;
     
     @Override
-    public List<TblProduct> letestService() {
-       System.out.println("these is Service");
+    public Map<TblProduct, List<TblProductImageMapping>> letestService() {
+       
       return  letestRepo.letestRepo();
+    }
+
+    @Override
+    public Map<TblProduct, List<TblProductImageMapping>> mostofferproductservice() {
+        
+         return  letestRepo.mostofferproductrepo();
     }
     
 }
