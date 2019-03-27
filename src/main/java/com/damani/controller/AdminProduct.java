@@ -39,7 +39,6 @@ import java.io.FileReader;
 import java.io.InputStream;
 import org.apache.commons.io.IOUtils;
 import org.apache.velocity.runtime.directive.Foreach;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**

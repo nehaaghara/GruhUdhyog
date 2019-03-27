@@ -4,9 +4,12 @@
     Author     : ITMCS-PC
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
  <!-- CONTAIN START -->
+
   <section class="checkout-section ptb-95">
     <div class="container">
       <div class="row">
@@ -66,47 +69,40 @@
                           <th>Action</th>
                         </tr>
                       </thead>
+                          <c:set var = "amount"  value = "0"/>
                       <tbody>
+                          <c:forEach var="userproductwithimage" items="${usercartproduct}">
                         <tr>
-                          <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Honour" src="${pageContext.servletContext.contextPath}/webresource/images/1.jpg"></div>
-                            </a></td>
-                          <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
+                          <td>
+                              <div class="product-image"><div class="banner"><div class="main-banner"><c:forEach  begin="0" end="0" var="image" items="${userproductwithimage.value}">
+                             <c:set var = "string1" value = "${image.imagePath}"/> 
+                            <c:set var = "string2" value = "${fn:replace(string1, '\\\\', '/')}" />
+                            <c:set var = "string3" value = "${fn:replace(string2, '/home/gruhudhyog/', '')}" />               
+                            <img alt="Honour" src="resources/${string3}"></c:forEach></div></div></div>
+                            </td>
+                            
+                          <td><div class="product-title">${userproductwithimage.key.productName}
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
+                                  <div class="price-box"> <span class="info-deta price">${userproductwithimage.key.productPrice}</span> <del class="price old-price">  ${userproductwithimage.key.discount} </del> </div>
                                 </div>
                               </div>
                               <div class="product-info-stock-sku m-0">
                                 <div>
                                   <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
+                                  <span class="info-deta">1</span></div>
                               </div>
-                            </div></td>
-                          <td><div data-id="100" class="total-price price-box"> <span class="price">$80.00</span> </div></td>
-                          <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
+                              </div></td> <c:set var = "originalvalue"  value = "${userproductwithimage.key.productPrice}"/>
+                      <c:set var = "discount"  value = "${userproductwithimage.key.discount}"/>
+                      <c:set var = "amountwithdiscount"  value = "${originalvalue-discount}"/>
+                      <c:set var = "amount"  value = "${amountwithdiscount+amount}"/>
+                  
+                          <td><div data-id="100" class="total-price price-box"> <span class="price">${originalvalue-discount}</span> </div></td>
+                          <td><input type="hidden" name="productid" value="${userproductwithimage.key.productPK}" /><a href="${pageContext.servletContext.contextPath}/deletefromorderoverviewpage/${userproductwithimage.key.productPK}"><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></a></td>
+                      
                         </tr>
-                        <tr>
-                          <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Honour" src="${pageContext.servletContext.contextPath}/webresource/images/2.jpg"></div>
-                            </a></td>
-                          <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
-                                </div>
-                              </div>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
-                              </div>
-                            </div></td>
-                          <td><div data-id="100" class="total-price price-box"> <span class="price">$80.00</span> </div></td>
-                          <td><i class="fa fa-trash cart-remove-item" data-id="100" title="Remove Item From Cart"></i></td>
-                        </tr>
+                             </c:forEach>
                       </tbody>
                     </table>
                   </div>
@@ -122,15 +118,15 @@
                       <tbody>
                         <tr>
                           <td>Item(s) Subtotal</td>
-                          <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">${amount}</span> </div></td>
                         </tr>
                         <tr>
                           <td>Shipping</td>
-                          <td><div class="price-box"> <span class="price">$0.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price">0.00</span> </div></td>
                         </tr>
                         <tr>
                           <td><b>Amount Payable</b></td>
-                          <td><div class="price-box"> <span class="price"><b>$160.00</b></span> </div></td>
+                          <td><div class="price-box"> <span class="price"><b>${amount}</b></span> </div></td>
                         </tr>
                       </tbody>
                     </table>
@@ -150,49 +146,21 @@
                       <tbody>
                         <tr>
                           <td><ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
-                              <li>
-                                <p>5-A kadEshoperi aprtment,opp. vasan eye care,</p>
-                              </li>
-                              <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
-                              </li>
-                              <li>
-                                <p>India</p>
-                              </li>
-                            </ul></td>
+                                  
+                                  <c:forEach  varStatus="loop"  var="address" items="${lstaddressofuser}" ><c:if test="${loop.index eq fn:length(lstaddressofuser)-1}"><li class="inner-heading"> <b>${address.firstName} ${address.lastName}</b> </li>
+                                      <li class="inner-heading"> <b>${address.email} , ${address.contactNumber}</b> </li>
+                                      <li class="inner-heading"> <b>${address.address}</b> </li>
+                                      <li class="inner-heading"> <b>${address.country}</b> </li>
+                                      <li class="inner-heading"> <b>${address.state} , ${address.city} - ${address.postcode} </b> </li>
+                                     
+                                      </c:if></c:forEach>
+                             </ul></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <div class="cart-total-table address-box commun-table">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Billing Address</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
-                              <li>
-                                <p>5-A kadEshoperi aprtment,opp. vasan eye care,</p>
-                              </li>
-                              <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
-                              </li>
-                              <li>
-                                <p>India</p>
-                              </li>
-                            </ul></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>

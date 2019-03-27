@@ -33,7 +33,7 @@ public class ProductCrudOperationonCartRepoImpl implements ProductCrudOperationo
         
         List<TblProduct> tblproduct= commonDAO.findEntity(TblProduct.class,"productPK",OperationTypeEnum.EQ,tblcart.getProductFK().getProductPK());
         tblcart.setTotalprice(tblproduct.get(0).getProductPrice());
-        System.out.println("ssssssssssssssssssssssssssss"+tblcart.getCreatedby().getUserid());
+     
         commonDAO.saveOrUpdate(tblcart);
     
     }

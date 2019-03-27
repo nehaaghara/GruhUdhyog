@@ -4,7 +4,26 @@
     Author     : ITMCS-PC
 --%>
 
+
+<%@page import="com.damani.model.TblProduct"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="java.math.BigInteger"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.Random"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+
+<%
+Random rand = new Random();
+int orderno = rand.nextInt(900000) + 10000;
+
+%>
+<form action="${pageContext.servletContext.contextPath}/conformorderdatasave" method="get">
 <!DOCTYPE html>
  <!-- CONTAIN START -->
   <section class="checkout-section ptb-95">
@@ -62,18 +81,33 @@
                         <tr>
                           <th>Product</th>
                           <th>Product Detail</th>
+                          <th> Payable Amount </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                          <% List<Object> usercartproductid=new ArrayList();%>
+                           <c:set var = "amount"  value = "0"/>
+                         <c:forEach var="productwithimage" items="${usercartproduct}" >
+                          <tr>
+                              <c:set var="productid" value="${productwithimage.key.productPK}" />
+                               <% 
+                                 usercartproductid.add( pageContext.getAttribute("productid"));
+                               %> 
                           <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/1.jpg"></div>
+                            <div class="product-image"><c:forEach  begin="0" end="0" var="image" items="${productwithimage.value}">
+                             <c:set var = "string1" value = "${image.imagePath}"/> 
+                            <c:set var = "string2" value = "${fn:replace(string1, '\\\\', '/')}" />
+                            <c:set var = "string3" value = "${fn:replace(string2, '/home/gruhudhyog/', '')}" /> <img alt="Eshoper" src="resources/${string3}"></c:forEach></div>
                             </a></td>
                           <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
                               <div class="product-info-stock-sku m-0">
                                 <div>
+                                    <c:set var = "originalvalue"  value = "${productwithimage.key.productPrice}"/>
+                                    <c:set var = "discount"  value = "${productwithimage.key.discount}"/>
+                                    <c:set var = "amountwithdiscount"  value = "${originalvalue-discount}"/>
+                                    <c:set var = "amount"  value = "${amountwithdiscount+amount}"/>
                                   <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
+                                  <div class="price-box"> <span class="info-deta price">${productwithimage.key.productPrice}</span> <del class="price old-price">  ${productwithimage.key.discount} </del></div>
                                 </div>
                               </div>
                               <div class="product-info-stock-sku m-0">
@@ -82,40 +116,37 @@
                                   <span class="info-deta">1</span> </div>
                               </div>
                             </div></td>
+                            <td>${amountwithdiscount}</td>
                         </tr>
-                        <tr>
-                          <td><a href="product-page.html">
-                            <div class="product-image"><img alt="Eshoper" src="${pageContext.servletContext.contextPath}/webresource/images/2.jpg"></div>
-                            </a></td>
-                          <td><div class="product-title"> <a href="product-page.html">Cross Colours Camo Print Tank half mengo</a>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Price: </label>
-                                  <div class="price-box"> <span class="info-deta price">$80.00</span> </div>
-                                </div>
-                              </div>
-                              <div class="product-info-stock-sku m-0">
-                                <div>
-                                  <label>Quantity: </label>
-                                  <span class="info-deta">1</span> </div>
-                              </div>
-                            </div></td>
-                        </tr>
+                       </c:forEach>
                       </tbody>
                     </table>
                   </div>
                 </div>
+                         <input type="hidden" name="listofusercartproductid" value="<%= usercartproductid %>">        
                 <div class="complete-order-detail commun-table mb-30">
                   <div class="table-responsive">
                     <table class="table">
                       <tbody>
                         <tr>
                           <td><b>Order Places :</b></td>
-                          <td>17 December 2016</td>
+                         
+                              <%
+                                LocalDate today = LocalDate.now(); 
+                                LocalDate newdate= today.plusDays(10);
+
+                              %>
+                        
+                        
+                       
+                          <td> <%= newdate %> </td>
+                      <input type="hidden" name="orderpalcedate" value="<%= newdate %>" />
+                      <input type="hidden" name="totalpayableamount" value="${amount}" />
+                      <input type="hidden" name="orderno" value="<%= orderno %>" />
                         </tr>
                         <tr>
                           <td><b>Total :</b></td>
-                          <td><div class="price-box"> <span class="price">$160.00</span> </div></td>
+                          <td><div class="price-box"> <span class="price"> ${amount} </span> </div></td>
                         </tr>
                         <tr>
                           <td><b>Payment :</b></td>
@@ -123,7 +154,7 @@
                         </tr>
                         <tr>
                           <td><b>Order No. :</b></td>
-                          <td>#011052</td>
+                          <td><%= orderno %></td>
                         </tr>
                       </tbody>
                     </table>
@@ -131,12 +162,12 @@
                 </div>
                 <div class="mb-30">
                   <div class="heading-part">
-                    <h3 class="sub-heading">Order Confirmation</h3>
+                    <h3 class="sub-heading"> Order Confirmation </h3>
                   </div>
                   <hr>
                   <p class="mt-20">Quisque id fermentum tellus. Donec fringilla mauris nec ligula maximus sodales. Donec ac felis nunc. Fusce placerat volutpat risus, ac fermentum ex tempus eget.</p>
                 </div>
-                <div class="right-side float-none-xs"> <a class="btn btn-color" href="shop.html"><span><i class="fa fa-angle-left"></i></span>Continue Shopping</a> </div>
+                        <div class="right-side float-none-xs"> <button class = "btn btn-color" type="submit"><span><i class="fa fa-angle-left"></i></span>Continue Shopping</button> </div>
               </div>
               <div class="col-sm-4">
                 <div class="cart-total-table address-box commun-table mb-30">
@@ -150,49 +181,20 @@
                       <tbody>
                         <tr>
                           <td><ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
-                              <li>
-                                <p>5-A kadEshoperi aprtment,opp. vasan eye care,</p>
-                              </li>
-                              <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
-                              </li>
-                              <li>
-                                <p>India</p>
-                              </li>
-                            </ul></td>
+                                  
+                                  <c:forEach  varStatus="loop"  var="address" items="${lstaddressofuser}" ><c:if test="${loop.index eq fn:length(lstaddressofuser)-1}"><li class="inner-heading"> <b>${address.firstName} ${address.lastName}</b> </li>
+                                      <li class="inner-heading"> <b>${address.email} , ${address.contactNumber}</b> </li>
+                                      <li class="inner-heading"> <b>${address.address}</b> </li>
+                                      <li class="inner-heading"> <b>${address.country}</b> </li>
+                                      <li class="inner-heading"> <b>${address.state} , ${address.city} - ${address.postcode} </b> </li>
+                                  </c:if></c:forEach>
+                             </ul></td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
-                <div class="cart-total-table address-box commun-table">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Billing Address</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><ul>
-                              <li class="inner-heading"> <b>Denial tom</b> </li>
-                              <li>
-                                <p>5-A kadEshoperi aprtment,opp. vasan eye care,</p>
-                              </li>
-                              <li>
-                                <p>Risalabaar,City Road, deesa-405001.</p>
-                              </li>
-                              <li>
-                                <p>India</p>
-                              </li>
-                            </ul></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -200,4 +202,5 @@
       </div>
     </div>
   </section>
+ </form>
   <!-- CONTAINER END --> 

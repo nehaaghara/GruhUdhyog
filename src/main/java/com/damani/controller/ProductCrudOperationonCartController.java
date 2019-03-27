@@ -81,16 +81,21 @@ public class ProductCrudOperationonCartController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/removeitemfromcart", method = RequestMethod.POST)
-    public String deleteitem(HttpServletRequest req) {
-        TblProduct tblproduct = new TblProduct();
-        TblUserTable tbluser = new TblUserTable();
-        Date date = new Date();
-        TblCart tblcart = new TblCart();
-        BigInteger productid = new BigInteger(req.getParameter("id"));
-        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
-        BigInteger userid = lstuser.get(0).getUserid();
-        productAddOnCartService.deleteitemservice(productid, userid);
+
+    @RequestMapping(value = "/removeitemfromcart" , method=RequestMethod.POST)
+    public String deleteitem(HttpServletRequest req)
+    {
+        TblProduct tblproduct=new TblProduct();
+        TblUserTable tbluser=new TblUserTable();
+        Date date=new Date();
+        TblCart tblcart=new TblCart();
+       
+        BigInteger productid=new BigInteger(req.getParameter("id"));
+        
+        List<TblUserTable> lstuser=( List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
+        BigInteger userid=lstuser.get(0).getUserid();
+        productAddOnCartService.deleteitemservice(productid,userid);
+
         return "success";
     }
 }
