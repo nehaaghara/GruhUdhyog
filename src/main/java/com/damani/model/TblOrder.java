@@ -45,7 +45,7 @@ public class TblOrder implements Serializable{
      
      @ManyToOne(fetch = FetchType.EAGER)
      @JoinColumn(name = "paymentFK")
-     TblPayment  TblPayment;
+     TblPaymentMethod  paymentFK;
    
     @Column(name = "isPaid")
     boolean ispaid;
@@ -83,12 +83,13 @@ public class TblOrder implements Serializable{
         this.ordertotal = ordertotal;
     }
 
-    public TblPayment getTblPayment() {
-        return TblPayment;
+   
+    public TblPaymentMethod getPaymentFK() {
+        return paymentFK;
     }
 
-    public void setTblPayment(TblPayment TblPayment) {
-        this.TblPayment = TblPayment;
+    public void setPaymentFK(TblPaymentMethod paymentFK) {
+        this.paymentFK = paymentFK;
     }
 
     

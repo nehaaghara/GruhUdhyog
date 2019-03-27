@@ -38,7 +38,7 @@ public class CustomInterceptor implements HandlerInterceptor{
     
     @Override
     public void postHandle(HttpServletRequest hsr, HttpServletResponse hsr1, Object o, ModelAndView mav) throws Exception {
-       
+
         Map<TblCategory,List<TblProduct>> mapofcategorywiseproduct=headerService.categoryservice();
         Map<TblProduct, List<TblProductImageMapping>> mapofproductwithimage= letestService.letestService();
         Map<TblProduct, List<TblProductImageMapping>> mostofferproductwithimage=letestService.mostofferproductservice();

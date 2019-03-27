@@ -20,5 +20,5 @@ public interface LetestService {
 
     public Map<TblProduct, List<TblProductImageMapping>> letestService();
     public Map<TblProduct, List<TblProductImageMapping>> mostofferproductservice();
-    
+
 }

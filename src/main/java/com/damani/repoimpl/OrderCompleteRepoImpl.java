@@ -31,14 +31,14 @@ public class OrderCompleteRepoImpl implements OrderCompleteRepo {
     public void countinuewithshoppingrepo(TblOrder tblorder, List<BigInteger> usercartproductid) {
 
         TblUserTable tbluser = tblorder.getCreatedby();
-//        List<TblShipping> lstaddress = commonDAO.findEntity(TblShipping.class, "createdBy.userid", OperationTypeEnum.EQ, tbluser.getUserid());
-//        String useraddress = lstaddress.get(lstaddress.size() - 1).getAddress();
-//        String usercity = lstaddress.get(lstaddress.size() - 1).getCity();
-//        String usercountry = lstaddress.get(lstaddress.size() - 1).getCountry();
-//        String userstate = lstaddress.get(lstaddress.size() - 1).getState();
-//        String userpincode = lstaddress.get(lstaddress.size() - 1).getPostcode();
-//        String userfulladdress = usercountry + userstate + usercity + useraddress + "PinCode" + userpincode;
-//        tblorder.setAddress(userfulladdress);
+        List<TblShipping> lstaddress = commonDAO.findEntity(TblShipping.class, "createdBy.userid", OperationTypeEnum.EQ, tbluser.getUserid());
+        String useraddress = lstaddress.get(lstaddress.size() - 1).getAddress();
+        String usercity = lstaddress.get(lstaddress.size() - 1).getCity();
+        String usercountry = lstaddress.get(lstaddress.size() - 1).getCountry();
+        String userstate = lstaddress.get(lstaddress.size() - 1).getState();
+        String userpincode = lstaddress.get(lstaddress.size() - 1).getPostcode();
+        String userfulladdress = usercountry +", "+ userstate +", "+ usercity +", " +useraddress +", "+ "PinCode" +", "+ userpincode;
+        tblorder.setAddress(userfulladdress);
         if (usercartproductid.size() > 0) {
             for (int i = 0; i < usercartproductid.size(); i++) {
                 List<TblCart> lstcart = commonDAO.findEntity(TblCart.class, "productFK.productPK", OperationTypeEnum.EQ, usercartproductid.get(i),"createdby.userid",OperationTypeEnum.EQ,tblorder.getCreatedby().getUserid());

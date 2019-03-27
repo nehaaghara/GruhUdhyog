@@ -7,7 +7,6 @@
 
 
 
-<%@page import="com.damani.model.TblSellerProduct"%>
 <%@page import="java.util.List"%>   
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>

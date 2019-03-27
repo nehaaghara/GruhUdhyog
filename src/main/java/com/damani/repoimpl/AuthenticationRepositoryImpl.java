@@ -31,7 +31,6 @@ public class AuthenticationRepositoryImpl implements  AuthenticationRepository{
      }
     @Override
     public List<TblUserTable> loginripo(TblUserTable usertable) {
-        System.out.println("hy i am hingu");
         return commonDAO.findEntity(TblUserTable.class,"email_address", OperationTypeEnum.EQ , usertable.getEmail_address() ,"password",OperationTypeEnum.EQ , usertable.getPassword());
     }
     

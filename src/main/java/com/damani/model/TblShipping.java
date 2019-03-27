@@ -1,8 +1,10 @@
 /*
+<<<<<<< HEAD
 * To change this license header, choose License Headers in Project Properties.
 * To change this template file, choose Tools | Templates
 * and open the template in the editor.
 */
+
 package com.damani.model;
 
 import java.math.BigInteger;
@@ -17,147 +19,146 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
-*
-* @author ITMCS
-*/
+
 @Entity
 @Table(name = "tbl_Shipping")
 public class TblShipping {
 
-@Id
-@Column(name = "shippingPK")
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-BigInteger shippingPK;
 
-@Column(name = "firstName")
-String firstName;
+    @Id
+    @Column(name = "shippingPK")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    BigInteger shippingPK;
 
-@Column(name = "lastName")
-String lastName;
+    @Column(name = "firstName")
+    String firstName;
 
-@Column(name = "email")
-String email;
+    @Column(name = "lastName")
+    String lastName;
 
-@Column(name = "contactNumber")
-String contactNumber;
+    @Column(name = "email")
+    String email;
 
-@Column(name = "address")
-String address;
+    @Column(name = "contactNumber")
+    String contactNumber;
 
-@Column(name = "country")
-String country;
+    @Column(name = "address")
+    String address;
 
-@Column(name = "state")
-String state;
+    @Column(name = "country")
+    String country;
 
-@Column(name = "city")
-String city;
+    @Column(name = "state")
+    String state;
 
-@Column(name = "postcode")
-String postcode;
+    @Column(name = "city")
+    String city;
 
-@Column(name = "createdOn")
-Date createdOn;
+    @Column(name = "postcode")
+    String postcode;
 
-@ManyToOne(fetch = FetchType.EAGER)
-@JoinColumn(name = "createdBy")
-TblUserTable createdBy;
+    @Column(name = "createdOn")
+    Date createdOn;
 
-public BigInteger getShippingPK() {
-return shippingPK;
-}
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "createdBy")
+    TblUserTable createdBy;
 
-public void setShippingPK(BigInteger shippingPK) {
-this.shippingPK = shippingPK;
-}
+    public BigInteger getShippingPK() {
+        return shippingPK;
+    }
 
-public String getFirstName() {
-return firstName;
-}
+    public void setShippingPK(BigInteger shippingPK) {
+        this.shippingPK = shippingPK;
+    }
 
-public void setFirstName(String firstName) {
-this.firstName = firstName;
-}
+    public String getFirstName() {
+        return firstName;
+    }
 
-public String getLastName() {
-return lastName;
-}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-public void setLastName(String lastName) {
-this.lastName = lastName;
-}
+    public String getLastName() {
+        return lastName;
+    }
 
-public String getEmail() {
-return email;
-}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-public void setEmail(String email) {
-this.email = email;
-}
+    public String getEmail() {
+        return email;
+    }
 
-public String getContactNumber() {
-return contactNumber;
-}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-public void setContactNumber(String contactNumber) {
-this.contactNumber = contactNumber;
-}
+    public String getContactNumber() {
+        return contactNumber;
+    }
 
-public String getAddress() {
-return address;
-}
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
 
-public void setAddress(String address) {
-this.address = address;
-}
+    public String getAddress() {
+        return address;
+    }
 
-public String getCountry() {
-return country;
-}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-public void setCountry(String country) {
-this.country = country;
-}
+    public String getCountry() {
+        return country;
+    }
 
-public String getState() {
-return state;
-}
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
-public void setState(String state) {
-this.state = state;
-}
+    public String getState() {
+        return state;
+    }
 
-public String getCity() {
-return city;
-}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-public void setCity(String city) {
-this.city = city;
-}
+    public String getCity() {
+        return city;
+    }
 
-public String getPostcode() {
-return postcode;
-}
+    public void setCity(String city) {
+        this.city = city;
+    }
 
-public void setPostcode(String postcode) {
-this.postcode = postcode;
-}
+    public String getPostcode() {
+        return postcode;
+    }
 
-public Date getCreatedOn() {
-return createdOn;
-}
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
 
-public void setCreatedOn(Date createdOn) {
-this.createdOn = createdOn;
-}
+    public Date getCreatedOn() {
+        return createdOn;
+    }
 
-public TblUserTable getCreatedBy() {
-return createdBy;
-}
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
 
-public void setCreatedBy(TblUserTable createdBy) {
-this.createdBy = createdBy;
-}
+    public TblUserTable getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(TblUserTable createdBy) {
+        this.createdBy = createdBy;
+    }
+
 
 }

@@ -16,25 +16,25 @@
         <div class="col-xs-12">
           <div class="checkout-step mb-40">
             <ul>
-              <li> <a href="checkout.html">
+              <li> <a href="${pageContext.servletContext.contextPath}/checkoutpage">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">1</div>
                 </div>
                 <span>Shipping</span> </a> </li>
-              <li class="active"> <a href="order-overview.html">
+              <li> <a href="${pageContext.servletContext.contextPath}/orderoverviewpage">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">2</div>
                 </div>
                 <span>Order Overview</span> </a> </li>
-              <li> <a href="payment.html">
+              <li class="active"> <a href="${pageContext.servletContext.contextPath}/paymentpage">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">3</div>
                 </div>
                 <span>Payment</span> </a> </li>
-              <li> <a href="order-complete.html">
+              <li> <a href="${pageContext.servletContext.contextPath}/ordercompletepage">
                 <div class="step">
                   <div class="line"></div>
                   <div class="circle">4</div>

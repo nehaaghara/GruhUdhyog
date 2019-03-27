@@ -8,6 +8,7 @@ package com.damani.controller;
 import com.damani.model.TblCart;
 import com.damani.model.TblOrder;
 import com.damani.model.TblPayment;
+import com.damani.model.TblPaymentMethod;
 import com.damani.model.TblProduct;
 import com.damani.model.TblProductImageMapping;
 import com.damani.model.TblShipping;
@@ -83,7 +84,7 @@ public class OrderCompleteController {
          }
          Date date=new Date();
          TblUserTable tbluser=new TblUserTable();
-         TblPayment tblpayment=new TblPayment();
+         TblPaymentMethod tblpayment=new TblPaymentMethod();
          TblOrder tblorder=new TblOrder();
          SimpleDateFormat formatter1=new SimpleDateFormat("dd/MM/yyyy");  
          String stringdate=  req.getParameter("orderpalcedate");
@@ -92,12 +93,12 @@ public class OrderCompleteController {
          double totalpayableamount = Double.parseDouble(req.getParameter("totalpayableamount"));
          int orderno=Integer.parseInt(req.getParameter("orderno"));
          List<TblUserTable> latuser=(List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
-         tblpayment.setPaymentPk(new BigInteger("1"));
+         tblpayment.setPaymentmethodPk(new BigInteger("1"));
          tbluser.setUserid(latuser.get(0).getUserid());
          tblorder.setOrderno(orderno);
          tblorder.setOrderdeliverydate(orderdeliverydate);
          tblorder.setOrdertotal(totalpayableamount);
-         tblorder.setTblPayment(tblpayment);
+         tblorder.setPaymentFK(tblpayment);
          tblorder.setIspaid(false);
          tblorder.setCreatedby(tbluser);
          tblorder.setCreatedon(date);
