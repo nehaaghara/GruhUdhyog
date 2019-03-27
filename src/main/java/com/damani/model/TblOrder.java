@@ -23,7 +23,7 @@ import javax.persistence.Table;
  * @author ITMCS-PC
  */
 @Entity
-@Table(name = "")
+@Table(name = "tbl_order")
 public class TblOrder implements Serializable{
     
     @Id
@@ -31,20 +31,21 @@ public class TblOrder implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     BigInteger orderid;
     
-    @Column(name = "orderDate")
-    Date orderdate;
+        @Column(name = "orderno")
+    int orderno;
     
-     
+    @Column(name = "orderdeliverydate")
+    Date orderdeliverydate;
+    
+    @Column(name = "address")
+    String address; 
+    
     @Column(name = "orderTotal")
     double ordertotal ;
-    
      
-    @Column(name = "status")
-    boolean status;
-    
-     
-    @Column(name = "paymentMethod")
-    String paymentMethod;
+     @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name = "paymentFK")
+     TblPayment  TblPayment;
    
     @Column(name = "isPaid")
     boolean ispaid;
@@ -52,6 +53,10 @@ public class TblOrder implements Serializable{
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="createdBy")
     TblUserTable createdby;
+    
+    @Column(name = "createdon")
+    Date createdon;
+    
 
     public BigInteger getOrderid() {
         return orderid;
@@ -61,13 +66,14 @@ public class TblOrder implements Serializable{
         this.orderid = orderid;
     }
 
-    public Date getOrderdate() {
-        return orderdate;
+    public Date getOrderdeliverydate() {
+        return orderdeliverydate;
     }
 
-    public void setOrderdate(Date orderdate) {
-        this.orderdate = orderdate;
+    public void setOrderdeliverydate(Date orderdeliverydate) {
+        this.orderdeliverydate = orderdeliverydate;
     }
+
 
     public double getOrdertotal() {
         return ordertotal;
@@ -77,22 +83,15 @@ public class TblOrder implements Serializable{
         this.ordertotal = ordertotal;
     }
 
-    public boolean isStatus() {
-        return status;
+    public TblPayment getTblPayment() {
+        return TblPayment;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setTblPayment(TblPayment TblPayment) {
+        this.TblPayment = TblPayment;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
+    
     public boolean isIspaid() {
         return ispaid;
     }
@@ -107,6 +106,30 @@ public class TblOrder implements Serializable{
 
     public void setCreatedby(TblUserTable createdby) {
         this.createdby = createdby;
+    }
+
+    public int getOrderno() {
+        return orderno;
+    }
+
+    public void setOrderno(int orderno) {
+        this.orderno = orderno;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getCreatedon() {
+        return createdon;
+    }
+
+    public void setCreatedon(Date createdon) {
+        this.createdon = createdon;
     }
     
     

@@ -97,9 +97,9 @@ public class ProductCrudOperationonCartController {
         TblUserTable tbluser=new TblUserTable();
         Date date=new Date();
         TblCart tblcart=new TblCart();
-        System.out.println("hy my name is hingu vikasssssssssssssssssssssssssssssssssssssssssssssssssssss");
+       
         BigInteger productid=new BigInteger(req.getParameter("id"));
-         System.out.println("hy my name is hingu vikasssssssssssssssssssssssssssssssssssssssssssssssssssss"+productid);
+        
         List<TblUserTable> lstuser=( List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
         BigInteger userid=lstuser.get(0).getUserid();
         productAddOnCartService.deleteitemservice(productid,userid);
