@@ -112,15 +112,15 @@
         var selectedVal = $(ctrl).children("option:selected").val();
         var amount = $(ctrl).parent().parent().siblings().find('#temp').text();
         var final = selectedVal * amount;
-        // var temp = $(ctrl).siblings("#totalamount").text();
         $(ctrl).parent().parent().siblings().find('#temp').html(final);
         var str = $('[id^=totalamount]').text();
-        alert($('[id^=totalamount]').text());
-        var replaced = str.replace(/ +(?= )/g, ",");
-        var split = replaced.split(",,");
-        var temp = new Array();
-        temp = str.split();
-        alert(temp);
+        var replaced = str.match(/[^ ,]+/g).join(',')
+        var arr = replaced.split(',');
+        var temp = 0.0;
+        for (i = 0; i < arr.length; i++) {
+            temp += Number(arr[i]);
+        }
+         $('#finaltotal').html(temp);
     }
 
 </script>
@@ -206,11 +206,11 @@
                                 <tbody>
                                     <tr>
                                         <td>Item(s) Subtotal</td>
-                                        <td><div class="price-box"> <span class="price">${total}</span> </div></td>
+                                        <td><div class="price-box"> <span class="price"></span> </div></td>
                                     </tr>
                                     <tr>
                                         <td><b>Amount Payable</b></td>
-                                        <td><div class="price-box"> <span class="price"><b>${total+shipingcharge}</b></span> </div></td>
+                                        <td><div class="price-box"> <span class="price" id="finaltotal"><b>${total}</b></span> </div></td>
                                     </tr>
                                 </tbody>
                             </table>
