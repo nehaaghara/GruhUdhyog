@@ -26,83 +26,71 @@ import com.damani.service.ProductCrudOperationonCartService;
  *
  * @author ITMCS-PC
  */
-
 @Controller
 public class ProductCrudOperationonCartController {
-    
+
     @Autowired
     ProductCrudOperationonCartService productAddOnCartService;
-    
-     
-        
-    
-    @ResponseBody 
-    @RequestMapping(value = "/addcart" , method=RequestMethod.POST)
-    public String productadd(HttpServletRequest req)
-    {
-        TblProduct tblproduct=new TblProduct();
-        TblUserTable tbluser=new TblUserTable();
-        Date date=new Date();
-        TblCart tblcart=new TblCart();
-       List<TblUserTable> lstuser=(List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
-        if(!lstuser.isEmpty())
-        {
-     
-        System.out.println("lstuser.get(0).getUserid()"+lstuser.get(0).getUserid());
-        tbluser.setUserid(lstuser.get(0).getUserid());
-        BigInteger productid= new BigInteger(req.getParameter("id"));
-       
-        tblproduct.setProductPK(productid);
-        tblcart.setProductFK(tblproduct);
-        tblcart.setQuantity(1);
-        tblcart.setIsorder(false);
-        tblcart.setIsactive(true);
-        tblcart.setCreatedon(date);
-        tblcart.setCreatedby(tbluser);
-        
-        productAddOnCartService.productaddservice(tblcart);
-        return "success";
-        }
-        else
-        {
+
+    @ResponseBody
+    @RequestMapping(value = "/addcart", method = RequestMethod.POST)
+    public String productadd(HttpServletRequest req) {
+        TblProduct tblproduct = new TblProduct();
+        TblUserTable tbluser = new TblUserTable();
+        Date date = new Date();
+        TblCart tblcart = new TblCart();
+        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
+        if (!lstuser.isEmpty()) {
+
+            System.out.println("lstuser.get(0).getUserid()" + lstuser.get(0).getUserid());
+            tbluser.setUserid(lstuser.get(0).getUserid());
+            BigInteger productid = new BigInteger(req.getParameter("id"));
+
+            tblproduct.setProductPK(productid);
+            tblcart.setProductFK(tblproduct);
+            tblcart.setQuantity(1);
+            tblcart.setIsorder(false);
+            tblcart.setIsactive(true);
+            tblcart.setCreatedon(date);
+            tblcart.setCreatedby(tbluser);
+
+            productAddOnCartService.productaddservice(tblcart);
+            return "success";
+        } else {
             return "com.damani.login";
         }
 
-     }
-    
-    @ResponseBody 
-    @RequestMapping(value = "/viewcart" , method=RequestMethod.GET)
-    public String viewcartproduct(HttpServletRequest req)
-    {
-       
-        TblProduct tblproduct=new TblProduct();
-        TblUserTable tbluser=new TblUserTable();
-        Date date=new Date();
-        TblCart tblcart=new TblCart();
-          List<TblUserTable> lstuser=(List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
-          System.out.println("before setuser");
-          tbluser.setUserid(lstuser.get(0).getUserid());
-          System.out.println("after setuser"+lstuser.get(0).getUserid());
-          tblcart.setCreatedby(tbluser);
-         
-        return new Gson().toJson(productAddOnCartService.viewcartproductservice(tblcart));
-          
     }
-    
+
     @ResponseBody
-    @RequestMapping(value = "/removeitemfromcart" , method=RequestMethod.POST)
-    public String deleteitem(HttpServletRequest req)
-    {
-        TblProduct tblproduct=new TblProduct();
-        TblUserTable tbluser=new TblUserTable();
-        Date date=new Date();
-        TblCart tblcart=new TblCart();
-        System.out.println("hy my name is hingu vikasssssssssssssssssssssssssssssssssssssssssssssssssssss");
-        BigInteger productid=new BigInteger(req.getParameter("id"));
-         System.out.println("hy my name is hingu vikasssssssssssssssssssssssssssssssssssssssssssssssssssss"+productid);
-        List<TblUserTable> lstuser=( List<TblUserTable>)req.getSession(false).getAttribute("lstuser");
-        BigInteger userid=lstuser.get(0).getUserid();
-        productAddOnCartService.deleteitemservice(productid,userid);
+    @RequestMapping(value = "/viewcart", method = RequestMethod.GET)
+    public String viewcartproduct(HttpServletRequest req) {
+
+        TblProduct tblproduct = new TblProduct();
+        TblUserTable tbluser = new TblUserTable();
+        Date date = new Date();
+        TblCart tblcart = new TblCart();
+        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
+        System.out.println("before setuser");
+        tbluser.setUserid(lstuser.get(0).getUserid());
+        System.out.println("after setuser" + lstuser.get(0).getUserid());
+        tblcart.setCreatedby(tbluser);
+
+        return new Gson().toJson(productAddOnCartService.viewcartproductservice(tblcart));
+
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/removeitemfromcart", method = RequestMethod.POST)
+    public String deleteitem(HttpServletRequest req) {
+        TblProduct tblproduct = new TblProduct();
+        TblUserTable tbluser = new TblUserTable();
+        Date date = new Date();
+        TblCart tblcart = new TblCart();
+        BigInteger productid = new BigInteger(req.getParameter("id"));
+        List<TblUserTable> lstuser = (List<TblUserTable>) req.getSession(false).getAttribute("lstuser");
+        BigInteger userid = lstuser.get(0).getUserid();
+        productAddOnCartService.deleteitemservice(productid, userid);
         return "success";
     }
 }
