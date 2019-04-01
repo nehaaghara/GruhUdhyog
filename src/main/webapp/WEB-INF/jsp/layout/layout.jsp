@@ -125,6 +125,21 @@
     
      }
      
+      function submit(ctrl) {
+        var selectedVal = $(ctrl).children("option:selected").val();
+        var amount = $(ctrl).parent().parent().siblings().find('#temp').text();
+        var final = selectedVal * amount;
+        $(ctrl).parent().parent().siblings().find('#temp').html(final);
+        var str = $('[id^=totalamount]').text();
+        var replaced = str.match(/[^ ,]+/g).join(',')
+        var arr = replaced.split(',');
+        var temp = 0.0;
+        for (i = 0; i < arr.length; i++) {
+            temp += Number(arr[i]);
+        }
+         $('#finaltotal').html(temp);
+    }
+     
 </script>
   
 <!-- Basic Page Needs
