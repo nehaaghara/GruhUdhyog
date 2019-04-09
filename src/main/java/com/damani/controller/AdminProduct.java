@@ -93,6 +93,7 @@ public class AdminProduct {
         }
         TblCategory tblCategory = categoryService.fetchCategoryById(addadminProductBean.getTblproduct().getCategoryFK().getCategoryPK());
         List<TblProductImageMapping> lstImageMappings = new ArrayList<>();
+        System.out.println("in::"+addadminProductBean.getLstadminproductimage());
         for (MultipartFile file : addadminProductBean.getLstadminproductimage()) {
             String fileName = UUID.randomUUID().toString() + "." + file.getOriginalFilename().split("\\.")[1];
             String filePath = CommonUtility.getProperty("imagePath") + File.separator + "ProductImages" + File.separator + tblCategory.getCategoryName() + File.separator + addadminProductBean.getTblproduct().getProductName() + File.separator;
